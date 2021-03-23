@@ -149,7 +149,7 @@ function mostrar(id){
              data=JSON.parse(data);
              mostrarform(true);
              $("#fecha_ingreso").val(data.Fecha_ingreso);
-             $("#horaingreso").val(data.Hora_Ingreso);
+             $("#horaingreso").val(data.Hora_ingreso);
                /* 
                 $("#nocontenedor").val("");
                 $("#barco").val("");
