@@ -33,4 +33,8 @@ class datosm{
         $sql="select * from ingreso_maestro where Id_Ingreso='$id'";
         return ejecutarConsultaSimpleFila($sql);
     }
+    public function desactivar($id){
+        $sql="update ingreso_maestro set estado='Desactivado' where Id_Ingreso='$id'";
+        return ejecutarConsulta($sql);
+    }
 }
