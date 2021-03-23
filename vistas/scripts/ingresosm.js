@@ -150,20 +150,24 @@ function mostrar(id){
              mostrarform(true);
              $("#fecha_ingreso").val(data.Fecha_ingreso);
              $("#horaingreso").val(data.Hora_ingreso);
-               /* 
-                $("#nocontenedor").val("");
-                $("#barco").val("");
-                $("#tipoc").val("");
-                $("#dcontenido").val("");
-                $("#dservicio").val("");
-                $("#marchamo").val("");
-                $("#htir").val(horaactual);
-                $("#serietir").val("A");
-                $("#producto").val("");
-                $("#orden").val("");         
-                $("#destino").val("");
-                $("#fechaasignacion").val();
-                $("#observaciones").val();*/
+             $("#nocontenedor").val(data.No_Contenedor);
+                $("#barco").val(data.Barco);
+                $("#tipoc").val(data.Tipo_contenido);
+                $("#dcontenido").val(data.Descripcion_contenido);
+                $("#dservicio").val(data.Detalle_Servicio);
+                $("#marchamo").val(data.Marchamo);
+                $("#htir").val(data.Hora_TIR);
+                $("#serietir").val(data.Serie_TIR);
+                $("#producto").val(data.producto);
+                $("#orden").val(data.Ord);         
+                $("#destino").val(data.Destino);
+                $("#fechaasignacion").val(data.Fecha_Asignacion);
+                $("#observaciones").val(data.Observaciones);
+                $("#bloque").val(data.Bloque);
+                $("#bloque").selectpicker('refresh'); 
+                $("#posicion").val(data.Posicion);
+                $("#posicion").selectpicker('refresh');
+                
            });
     
 }
