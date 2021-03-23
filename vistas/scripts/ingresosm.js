@@ -5,6 +5,10 @@ function init(){
     listar();
     listar_bloque();
     listar_pilotos();
+    
+    $("#formularioingreso").on("submit",function(e){
+       guardaryeditar(e); 
+    });
 }
 function listar_bloque(){
     $.post("../ajax/bloque_posicion.php?op=listar_bloques",function(r){
