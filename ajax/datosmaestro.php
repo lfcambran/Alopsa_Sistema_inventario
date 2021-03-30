@@ -34,7 +34,13 @@ switch ($_GET["op"]){
             $rspta=$datosmaestros->insertar($fechai,$horai,$contenedor,$barco,$tipocontenido,$descontenido,$detalleservicio,$marchamo,$horatir,$serietir,$producto,$orden,$bloque,$posicion,$destino,$fechaasignacion,$idpiloto,$user_id,$observaciones);
             echo $rspta ? 'Ingreso Realizado Exitosamente':'Error al realizar el Ingreso';
         }else {
-            $rspta=$datosmaestros->actualizar($id, $fechai,$horai,$contenedor,$barco,$tipocontenido,$descontenido,$detalleservicio,$marchamo,$horatir,$serietir,$producto,$orden,$bloque,$posicion,$destino,$fechaasignacion,$idpiloto,$user_id,$observaciones);
+            $noposicionac= isset($_POST['noposicion']);
+            if ($posicion==0){
+                $nposicion=$noposicionac;
+            }else{
+               $nposicion= $posicion;
+            }
+            $rspta=$datosmaestros->actualizar($id, $fechai,$horai,$contenedor,$barco,$tipocontenido,$descontenido,$detalleservicio,$marchamo,$horatir,$serietir,$producto,$orden,$bloque,$nposicion,$destino,$fechaasignacion,$idpiloto,$user_id,$observaciones);
                     
             echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos"; 
         }
@@ -43,12 +49,16 @@ switch ($_GET["op"]){
         
     case 'activar':
         $idingreso=$_REQUEST['idingreso'];
-        $rspta=$datosmaestros->activar($idingreso);
-         echo $rspta ? "Ingreso Activado correctamente" : "No se pudo activar el ingreso";
+        $bloque=$_REQUEST['idbloque'];
+        $posicion=$_REQUEST['posicion'];
+        $rspta=$datosmaestros->activar($idingreso,$bloque,$posicion);
+         echo $rspta ? "Ingreso Activado correctamente" : "No se pudo activar el ingreso el bloque y la posicion ya se encuentra en uso";
         break;
     case 'desactivar':
         $idingreso=$_REQUEST['idingreso'];
-        $rspta=$datosmaestros->desactivar($idingreso);
+        $idbloque=$_REQUEST['idbloque'];
+        $posicion=$_REQUEST['idposicion'];
+        $rspta=$datosmaestros->desactivar($idingreso,$idbloque,$posicion);
          echo $rspta ? "Datos desactivados correctamente" : "No se pudo desactivar los datos";
         break;
     case 'mostrardatos';
@@ -63,9 +73,9 @@ switch ($_GET["op"]){
         while ($reg=$rspta->fetch_object()){
             $opcion="";
                     if ($reg->Estado=='Ingresado'){
-                       $opcion ='<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Ingreso.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular Ingreso"></i></button> ';
+                       $opcion ='<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Ingreso.','.$reg->idb.','.$reg->idp.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular Ingreso"></i></button> ';
                     }else {
-                        $opcion = '<button class="btn btn-success btn-xs" onclick="activar('.$reg->Id_Ingreso.')"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="Activar Ingreso"></i></button>';
+                        $opcion = '<button class="btn btn-success btn-xs" onclick="activar('.$reg->Id_Ingreso.','.$reg->idb.','.$reg->idp.')"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="Activar Ingreso"></i></button>';
                     }
             $datos[]=array(
                 "0"=>$reg->Nombre_de_Piloto,

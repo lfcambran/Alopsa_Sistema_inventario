@@ -17,21 +17,27 @@ global $conexion;
 $query=$conexion->query($sql);
 return $query;
 
-	}
+}
 
-	function ejecutarConsultaSimpleFila($sql){
+function ejecutarConsultaSimpleFila($sql){
             global $conexion;
 
             $query=$conexion->query($sql);
             $row=$query->fetch_assoc();
             return $row;
-	}
+}
+
 function ejecutarConsulta_retornarID($sql){
 global $conexion;
 $query=$conexion->query($sql);
 return $conexion->insert_id;
 }
-
+function numeroitem($sql){
+    global $conexion;
+    $result=$conexion->query($sql);
+    $rowcount=mysqli_num_rows($result);
+    return $rowcount;
+}
 function limpiarCadena($str){
 global $conexion;
 $str=mysqli_real_escape_string($conexion,trim($str));

@@ -155,11 +155,12 @@ function mostrar(id){
            function(data,status){
              data=JSON.parse(data);
              mostrarform(true);
+             $("#idingreso").val(data.Id_Ingreso);
              $("#fecha_ingreso").val(data.Fecha_ingreso);
              $("#horaingreso").val(data.Hora_ingreso);
              $("#nocontenedor").val(data.No_Contenedor);
                 $("#barco").val(data.Barco);
-                $("#tipoc").val(data.Tipo_contenido);
+                $("#tipoc").val(data.Tipo_Contenido);
                 $("#dcontenido").val(data.Descripcion_contenido);
                 $("#dservicio").val(data.Detalle_Servicio);
                 $("#marchamo").val(data.Marchamo);
@@ -177,29 +178,32 @@ function mostrar(id){
                 $("#piloto").val(data.Id_f);
                 $("#piloto").selectpicker('refresh');
                 $("#idpiloto").val(data.Id_f);
+                $("#noposicion").val(data.Posicion);
                 datospiloto();
                
            });
     
 }
-function dasactivar(idingreso){
+function dasactivar(idingreso,idbloque,posicion){
    $("#getmodal").modal('show');
    $("#id_anular").val(idingreso);
+   $("#idb").val(idbloque);
+   $("#idp").val(posicion);
 }
-function activar(idingreso){
+function activar(idingreso,idbloque,posicion){
      bootbox.confirm("¿Se activara el ingreso seleccionado desea continuar?", function(result){
 		if (result) {
-			$.post("../ajax/datosmaestro.php?op=activar", {idingreso : idingreso}, function(e){
+			$.post("../ajax/datosmaestro.php?op=activar", {idingreso : idingreso, idbloque:idbloque, posicion: posicion}, function(e){
 				bootbox.alert(e);
 				tabla.ajax.reload();
 			});
 		}
 	});
 }
-function desactivaringreso(val){
+function desactivaringreso(val,val2,val3){
      bootbox.confirm("¿Esta seguro de desactivar el ingreso seleccionado?", function(result){
 		if (result) {
-			$.post("../ajax/datosmaestro.php?op=desactivar", {idingreso : val}, function(e){
+			$.post("../ajax/datosmaestro.php?op=desactivar", {idingreso : val,idbloque:val2,idposicion:val3}, function(e){
 				bootbox.alert(e);
                                 $('#getmodal').modal('toggle');
 				tabla.ajax.reload();
@@ -221,7 +225,9 @@ function validarusuario(e){
         function(data){
             if (data!="null"){
                 var idanular=$("#id_anular").val();
-                desactivaringreso(idanular);
+                var idblo=$("#idb").val();
+                var idpo=$("#idp").val()
+                desactivaringreso(idanular,idblo,idpo);
             }else{
                 bootbox.alert("No cuenta con el acceso para anular el ingreso")
             }

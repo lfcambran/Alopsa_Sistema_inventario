@@ -113,9 +113,10 @@ if (!isset($_SESSION['nombre'])){
                                     </div>
                                     <div class="form-group col-lg-2 col-md-3 col-xs-12">
                                         <label>Posicion</label>
-                                        <select name="posicion" id="posicion" class="form-control selectpicker" data-live-search="true" required>
+                                        <select name="posicion" id="posicion" class="form-control selectpicker" data-live-search="true">
                                             
                                         </select>
+                                        <input type="hidden" id="noposicion" name="noposicion">
                                     </div>
                                  
                                      <div class="form-group col-lg-3 col-md-3 col-xs-12">
@@ -166,6 +167,8 @@ if (!isset($_SESSION['nombre'])){
                 <form action="" name="formularioauto" id="formularioauto" method="POST">
                     <div class="form-group col-lg-12 col-md-12 col-xs-12">
                         <input type="hidden" id="id_anular" name="id_anular">
+                        <input type="hidden" id="idb" name="idb">
+                        <input type="hidden" id="idp" name="idp">
                         <label>Usuario:</label>
                         <input type="text" class="form-control" name="usuario" id="usuario">
                         <label>Contraseña:</label>
