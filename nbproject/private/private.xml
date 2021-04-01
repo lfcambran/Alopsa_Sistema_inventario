@@ -5,8 +5,14 @@
         <group>
             <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/datosmaestro.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/datosmaestro.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/bloque_posicion.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/ingresosm.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresosm.js</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/index.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/flotatransporte.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/monitoreo.js</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/flotatransporte.php</file>
         </group>
     </open-files>

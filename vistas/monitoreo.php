@@ -97,6 +97,11 @@ if (!isset($_SESSION['nombre'])){
                         <label>Mecanico:</label>
                         <input type="text" class="form-control" name="mecanico" id="mecanico" placeholder="mecanico" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
+                        <div class="form-group col-lg-5 col-md-3 col-xs-4">
+                            <label>Observaciones:</label>
+                            <textarea class="form-control" id="observaciones" name="observaciones" ></textarea>
+                        </div>
+                           
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>

@@ -4,10 +4,28 @@ if (strlen(session_id())<1)
 
 require '../modelos/monitoreo.php';
 $monitoreo=new monitoreo_c;
+$id= isset($_POST['idmonitoreo'])? limpiarCadena($_POST['idmonitoreo']):"";
+$idingreso= isset($_POST['contenedor'])? limpiarCadena($_POST['contenedor']):"";
+$horamonitoreo= isset($_POST['horamonitoreo'])? limpiarCadena($_POST['horamonitoreo']):"";
+$fechamonitoreo= isset($_POST['fecham'])? limpiarCadena($_POST['fecham']):"";
+$retorno=isset($_POST['retorno'])? limpiarCadena($_POST['retorno']):"";
+$setpoint= isset($_POST['setpoint'])? limpiarCadena($_POST['setpoint']):"";
+$suministro= isset($_POST['suministro'])? limpiarCadena($_POST['suministro']):"";
+$mecanico= isset($_POST['mecanico'])? limpiarCadena($_POST['mecanico']):"";
+$observaciones=isset($_POST['observaciones'])? limpiarCadena($_POST['observaciones']):"";
+
 $user_id=$_SESSION['idusuario'];
 
 switch ($_GET['op']){
-    
+    case 'guardaryeditar':
+        if (empty($id)){
+            $rspta=$monitoreo->insertar();
+            echo $rspta ? 'Se Ingreso el Monitoreo Exitosamente':'Error al realizar el Monitoreo';
+        }else{
+            
+             echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos"; 
+        }
+        break;
     case 'listar':
         $rspta=$monitoreo->listar();
         $datosm=array();
@@ -46,12 +64,13 @@ switch ($_GET['op']){
         $rspta=$monitoreo->datosingreso($idingreso);
         while ($row = mysqli_fetch_array($rspta)){
         echo '<div class="form-group col-lg-2 col-md-3 col-xs-12">'
-            . '<label>ORD:</label><input type="text" class="form-control " value="'.$row['Ord'].'" disabled="true">'
-            . '</div><div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Producto:</label><input type="text" class="form-control" value="'.$row['producto'].'" disabled="true"></div>'
+            . '<label>ORD:</label><input type="text" class="form-control" id="ord" name="ord" value="'.$row['Ord'].'" disabled="true">'
+            . '</div><div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Producto:</label><input type="text" id="producto" name="producto" class="form-control" value="'.$row['producto'].'" disabled="true"></div>'
             . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Bloque:</label><input type="text" class="form-control" value="'.$row['Descripcion'].'" disabled="true"></div>'
             . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Posicion:</label><input type="text" class="form-control" value="'.$row['noposicion'].'" disabled="true"></div>'
             . '<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Barco:</label><input type="text" class="form-control" value="'.$row['Barco'].'" disabled="true"></div>'
             . '<input type="hidden" id="id_f" name="id_f" value="'.$row['Id_f'].'">';
+        
         }
         break;
 }

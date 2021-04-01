@@ -64,12 +64,16 @@ function mostraringreso(val){
 }
 function guardaryeditar(e){
     e.preventDefault();
+    var producto=$('#producto').val();
+    
     $("#btnGuardar").prop('disabled',false);
     var formdata= new FormData($('#formulariom')[0]);
     if ($("#contenedor").val()=='0'){
+        
         bootbox.alert("Debe de Seleccionar el Contenedor para continuar");
     }else{
-        $.ajax({
+        
+       $.ajax({
            url:"../ajax/monitoreo.php?op=guardaryeditar",
            type: "POST",
            data: formdata,

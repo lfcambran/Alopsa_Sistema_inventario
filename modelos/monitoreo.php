@@ -7,6 +7,10 @@ class monitoreo_c{
     public function __construct() {
         
     }
+    public function insertar($horamonitoreo,$retorno,$observacion,$producto,$setpoint,$suministro,$fecha,$mecanico,$idingreso,$idf,$idusuario){
+        $sql="CALL insertar_monitoreo()";
+        return ejecutarConsulta($sql);
+    }
     public function listar(){
         $sql="CALL listar_Monitoreo";
         return ejecutarConsulta($sql);
