@@ -2,6 +2,7 @@
 
 ob_start();
 session_start();
+date_default_timezone_set("America/Guatemala");
 if (!isset($_SESSION['nombre'])){
     header("Location: login.html");
 }else{
@@ -79,7 +80,7 @@ if (!isset($_SESSION['nombre'])){
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Fecha:</label>
-                        <input type="date" class="form-control" name="fecham" id="fecham" value="<?php echo date("Y-m-d"); ?>">
+                        <input type="date" class="form-control" name="fecham" id="fecham" value="<?php  echo date("Y-m-d"); ?>">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Retorno:</label>
@@ -105,7 +106,7 @@ if (!isset($_SESSION['nombre'])){
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>
-                        <button class="btn btn-danger pull-right" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                        <button class="btn btn-danger pull-right" onclick="cancelarform()" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                     </div>
                     
                 </form>

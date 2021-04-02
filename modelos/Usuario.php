@@ -52,6 +52,10 @@ public function editar_clave($id_usuario,$clave){
 	$sql="UPDATE usuarios SET clave='$clave' WHERE id_usuario='$id_usuario'";
 	return ejecutarConsulta($sql);
 }
+public function cambiar_clave($usuario,$clave){
+    $sql="UPDATE usuarios SET clave='$clave' WHERE usuario='$usuario'";
+    return ejecutarConsulta($sql);
+}
 public function mostrar_clave($id_usuario){
 	$sql="SELECT id_usuario, clave FROM usuarios WHERE id_usuario='$id_usuario'";
 	return ejecutarConsultaSimpleFila($sql);
@@ -93,6 +97,16 @@ public function verificar($login,$clave)
 public function verificaranulacion($login,$clave){
     $sql="SELECT id_usuario,nombre_usuario,email,descripcion cargo,imagen,nombre_usuario  FROM usuarios inner join rol on usuarios.id_rol = rol.id_rol WHERE usuario='$login' AND clave='$clave' AND condicion='1' AND rol.id_rol in(1,3)"; 
     	return ejecutarConsulta($sql);  
+}
+public function consulta_usuario($usuario){
+    $sql="select * from usuarios where usuario='$usuario'";
+    if (numeroitem($sql)==0){
+        return false;
+    }else {
+        return true;
+        
+    }
+    
 }
 }
 

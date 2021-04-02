@@ -69,7 +69,19 @@ switch ($_GET["op"]) {
 		$rspta=$usuario->editar_clave($idusuarioc,$clavehash);
 		echo $rspta ? "Password actualizado correctamente" : "No se pudo actualizar el password";
 	break;
+        case 'resetpassword':
+            $idusuario=$_REQUEST["idusuario"];
+            $clavenueva=$_REQUEST["clave"];
+            $clavehash=hash("SHA256", $clavenueva);
 
+		$rspta=$usuario->cambiar_clave($idusuario,$clavehash);
+		echo $rspta ? "Password actualizado correctamente" : "No se pudo actualizar el password";
+            break;
+        case 'consultarusuario':
+            $idusuario=$_REQUEST["idusuario"];
+            $rspta=$usuario->consulta_usuario($idusuario);
+            echo $rspta ? "0":"1";
+            break;
 	case 'mostrar_clave':
 		$rspta=$usuario->mostrar_clave($idusuario);
 		echo json_encode($rspta);

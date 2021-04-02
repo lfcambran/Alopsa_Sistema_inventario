@@ -40,15 +40,17 @@
 										<span class="fa fa-key form-control-feedback"></span>
 									  </div>
 									  <div class="row">
-										<div class="col-xs-8">
-										  <button class="btn btn-success btn-block btn-flat">Cambiar Contraseña</button>
-										</div><!-- /.col -->
+										
 										<div class="col-xs-4">
 										  <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
                                                                                   
 										</div><!-- /.col -->
+                                                                                <div class="col-xs-8">
+                                                                                    <button type="button" onclick="mostrarmodal()" class="btn btn-success btn-block btn-flat">Cambiar Contraseña</button>
+										</div><!-- /.col -->
 									  </div>
 									</form>
+                                                                        
 						 </div>
 			</div>
        
@@ -57,6 +59,32 @@
       </div>--><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 
+    <div class="modal fade" id="getmodal_cambio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambio de contraseña</h4>
+            </div>
+                <div class="modal-body">
+                    <label>Usuario</label>
+                    <div class="form-group has-feedback">
+                    <input type="text" class="form-control" name="usuario" id="usuario">
+                    <span class="fa fa-user form-control-feedback"></span>
+                    </div>
+                    <label>Nueva Contraseña</label>
+                    <div class="form-group has-feedback">
+                    <input type="password" class="form-control" id="newpassword" name="newpassword">
+                    <span class="fa fa-key form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="limpiar()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" onclick="cambiarpassword()" class="btn btn-primary">Cambiar Contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- jQuery -->
     <script src="../public/js/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

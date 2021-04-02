@@ -7,7 +7,7 @@ function init(){
        guardaryeditar(e);
     });
 }
-
+//lista todo los monitoreos en la tabla
 function listar(){
     tabla=$('#tbllistadoingresos').dataTable({
         "aProcessing":true,
@@ -62,10 +62,11 @@ function mostraringreso(val){
        }
     });
 }
+function cancelarform(){
+    limpiar();
+}
 function guardaryeditar(e){
-    e.preventDefault();
-    var producto=$('#producto').val();
-    
+    e.preventDefault();    
     $("#btnGuardar").prop('disabled',false);
     var formdata= new FormData($('#formulariom')[0]);
     if ($("#contenedor").val()=='0'){
@@ -74,10 +75,12 @@ function guardaryeditar(e){
     }else{
         
        $.ajax({
-           url:"../ajax/monitoreo.php?op=guardaryeditar",
+           url: "../ajax/monitoreo.php?op=guardaryeditar",
            type: "POST",
            data: formdata,
            contentType: false,
+           processData: false,
+           
            success: function(datos){
            bootbox.alert(datos);
            tabla.ajax.reload();
@@ -87,5 +90,27 @@ function guardaryeditar(e){
         
     }
         
+}
+function limpiar(){
+    var now = new Date();
+    var dia = ("0" + now.getDate()).slice(-2);
+    var mes = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(mes)+"-"+dia;
+    alert(today);
+    var hora = now.getHours();
+    var minuto =("0" + now.getMinutes()).slice(-2);
+    var segundo = ("0" + now.getSeconds()).slice(-2);
+    var horaactual = hora + ":" + minuto + ":" + segundo;
+    listarcomboingreso();
+    $("#horamonitoreo").val(horaactual);
+    $("#fecham").val(today);
+    $("#contenedor").val(false).trigger("change");
+    $("#idingreso").val("");
+    $("#retorno").val("");
+    $("#setpoint").val("");
+    $("#suministro").val("");
+    $("#mecanico").val("");
+    $("#observaciones").val();
+    
 }
 init();
