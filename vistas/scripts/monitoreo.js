@@ -6,6 +6,9 @@ function init(){
     $("#formulariom").on("submit",function(e){
        guardaryeditar(e);
     });
+    $("#formularioautorizacion").on("submit",function(e){
+       validarusuario(e); 
+    });
 }
 //lista todo los monitoreos en la tabla
 function listar(){
@@ -130,5 +133,44 @@ function mostrar(id){
                 mostrarform();
             }
     );
+}
+function dasactivar(id_monitoreo){
+    $("#getmodalau_m").modal('show');
+    $("#id_monitoreo").val(id_monitoreo);
+    
+}
+
+function validarusuario(e){
+    e.preventDefault();
+    $("#btnGuardar2").prop("disabled",false);
+    var usuario=$("#usuario").val();
+    var password=$("#password").val();
+    if ($("#usuario").val()==""){
+        bootbox.alert("Debe de Ingresar su usuario para anular el ingreso");
+    }else if ($("#password").val()=="") {
+        bootbox.alert('Debe de Ingresar su contraseña para continuar');
+    }else{
+        $.post("../ajax/usuario.php?op=validaranulacion",{"logina":usuario,"clavea":password},
+        function(data){
+            if (data!="null"){
+                var idanular=$("#id_monitoreo").val();
+                desactivar_m(idanular,);
+            }else{
+                bootbox.alert("No cuenta con el acceso para anular el ingreso")
+            }
+        }
+        );
+    }
+}
+function desactivar_m(val){
+     bootbox.confirm("¿Esta seguro de desactivar el ingreso seleccionado?", function(result){
+		if (result) {
+			$.post("../ajax/monitoreo.php?op=desactivar", {id_m : val}, function(e){
+				bootbox.alert(e);
+                                $('#getmodalau_m').modal('toggle');
+				tabla.ajax.reload();
+			});
+		}
+	});
 }
 init();

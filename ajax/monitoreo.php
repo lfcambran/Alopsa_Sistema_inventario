@@ -80,4 +80,9 @@ switch ($_GET['op']){
         $rspta=$monitoreo->mostrarm($idmonitoreo);
         echo json_encode($rspta);
         break;
+    case 'desactivar':
+        $idmo=$_REQUEST['id_m'];
+        $rspta=$monitoreo->desactivar($idmo);
+         echo $rspta ? "Monitoreo desactivados correctamente" : "No se pudo desactivar el monitoreo";
+        break;
 }

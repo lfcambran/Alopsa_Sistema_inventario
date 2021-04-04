@@ -31,4 +31,8 @@ class monitoreo_c{
         $sql="call datosingreso('$ingreso')";
         return ejecutarConsulta($sql);
     }
+    public function desactivar($id){
+        $sql="update monitoreo set estado='Inactivo' where Id_m='$id'";
+        return ejecutarConsulta($sql);
+    }
 }
