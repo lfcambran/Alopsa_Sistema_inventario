@@ -156,7 +156,8 @@ if (!isset($_SESSION['nombre'])){
             </section>
     </div>
 
-<div class="modal fade" id="getmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidde="true">
+<div class="modal fade" id="getmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidde="true"  data-backdrop="static" 
+  data-keyboard="false">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">

@@ -7,7 +7,7 @@
   </footer>
 
 <!-- jQuery 3 -->
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../public/js/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../public/js/bootstrap.min.js"></script>

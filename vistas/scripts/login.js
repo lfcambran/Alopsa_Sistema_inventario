@@ -48,7 +48,7 @@ $("#frmAcceso").on('submit',function(e)
         }
         else
         {
-            bootbox.alert("Usuario y/o Password incorrectos");
+            swal({icon: "error", title:"Error de Autenticacion", text: "Usuario y/o Password incorrectos"});
         }
     });
 })

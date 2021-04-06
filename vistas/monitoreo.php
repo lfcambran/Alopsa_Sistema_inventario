@@ -46,7 +46,8 @@ if (!isset($_SESSION['nombre'])){
     </section>
 </div>
 
-<div class="modal" id="getmodalm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" id="getmodalm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static" 
+  data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,7 +120,8 @@ if (!isset($_SESSION['nombre'])){
     </div>
 </div>
 
-<div class="modal fade" id="getmodalau_m" nama="getmodalau_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidde="true">
+<div class="modal fade" id="getmodalau_m" nama="getmodalau_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidde="true"  data-backdrop="static" 
+  data-keyboard="false">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">

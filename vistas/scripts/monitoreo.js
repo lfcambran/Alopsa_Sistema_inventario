@@ -74,7 +74,7 @@ function guardaryeditar(e){
     var formdata= new FormData($('#formulariom')[0]);
     if ($("#contenedor").val()=='0'){
         
-        bootbox.alert("Debe de Seleccionar el Contenedor para continuar");
+        swal({title: "Dato Importante", text:"Debe de Seleccionar el contenedor para continuar"});
     }else{
         
        $.ajax({

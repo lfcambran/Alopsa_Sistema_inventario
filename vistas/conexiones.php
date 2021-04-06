@@ -45,7 +45,8 @@ if (!isset($_SESSION['nombre'])){
         </div>
     </section>
 </div>
-<div class="modal" id="getmodalConexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" id="getmodalConexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static" 
+  data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -80,15 +81,15 @@ if (!isset($_SESSION['nombre'])){
                         </div>
                        <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Retorno:</label>
-                        <input type="text" class="form-control" name="retorno" id="retorno" placeholder="Retorno" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        <input type="text" class="form-control" name="retorno" id="retorno"  autocomplete="off" placeholder="Retorno" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Set Point:</label>
-                        <input type="text" class="form-control" name="setpoint" id="setpoint" placeholder="Set Point" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        <input type="text" class="form-control" name="setpoint"  autocomplete="off" id="setpoint" placeholder="Set Point" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Suministro:</label>
-                        <input type="text" class="form-control" name="suministro" id="suministro" placeholder="Suministro" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        <input type="text" class="form-control" name="suministro"  autocomplete="off" id="suministro" placeholder="Suministro" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

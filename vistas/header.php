@@ -27,7 +27,7 @@ if (strlen(session_id())<1)
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">    
     <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
     <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet"/>
-
+    
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
 <link rel="stylesheet" type="text/css" href="../public/clockpicker/jquery-clockpicker.css">
     <link rel="stylesheet" type="text/css" href="../public/clockpicker/bootstrap-clockpicker.min.css">
