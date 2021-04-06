@@ -30,8 +30,6 @@ $user_id=$_SESSION["idusuario"];
         <div class="panel-body">
             
         </div>
-
-<!--fin centro-->
       </div>
       </div>
       </div>

@@ -71,7 +71,24 @@ function guardaryeditar(e){
     if ($("#contenedor").val()==0){
         swal({title: "Dato Importante", text:"Debe de Seleccionar el contenedor para continuar"});
     }else {
-        
+        $.ajax({
+           url: "../ajax/conexiones.php?op=guardaryeditar",
+           type: "POST",
+           data: data,
+           contentType: false,
+           processData: false,
+           success: function(datos){
+               var d = datos.substring(0,1);
+               if (d=='Se'){
+                   swal({icon:'success',title:'Conecxion', text:datos});
+                   tabla.ajax.reload();
+                    $('#getmodalConexion').modal('toggle');
+               }else if (d=='Er'){
+                   swal({icon:'error',title:'Error al Grabar', text:datos});
+               }
+           }
+        });
+       
     }
 }
 function limpiar(){

@@ -5,8 +5,27 @@ if (strlen(session_id())<1)
 
 require '../modelos/conexiones.php';
 $conexionc=new conexiones_c;
+$idconexion=isset($_POST['idconexion'])? limpiarCadena($_POST['idconexion']):"";
+$contenedor=isset($_POST['contenedor'])? limpiarCadena($_POST['contenedor']):"";
+$id_ingreso= isset($_POST['idingreso'])? limpiarCadena($_POST['idingreso']):"";
+$fechaconexion=isset($_POST['fechaco'])? limpiarCadena($_POST['fechaco']):"";
+$horaconexion=isset($_POST['horaconexion'])? limpiarCadena($_POST['horaconexion']):"";
+$retorno=isset($_POST['retorno'])? limpiarCadena($_POST['retorno']):"";
+$setpoint= isset($_POST['setpoint'])? limpiarCadena($_POST['setpoint']):"";
+$suministro= isset($_POST['suministro'])? limpiarCadena($_POST['suministro']):"";
+$idf=isset($_POST['id_f'])? limpiarCadena($_POST['id_f']):"";
+$user_id=$_SESSION['idusuario'];
 
 switch ($_GET['op']){
+    case 'guardaryeditar':
+        if (empty($idconexion)){
+            $rspta=$conexionc->insertar($fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf, $user_id);
+             echo $rspta ? 'Se Ingreso el Monitoreo Exitosamente':'Error al realizar el Monitoreo';
+        }else{
+            
+        }
+        break;
+    
     case 'listar':
         $rspta=$conexionc->listar();
         $datosc=array();
