@@ -2,6 +2,7 @@
 
 ob_start();
 session_start();
+date_default_timezone_set("America/Guatemala");
 if (!isset($_SESSION['nombre'])){
     header("Location: login.html");
 }else{
@@ -64,8 +65,31 @@ if (!isset($_SESSION['nombre'])){
 
                         </div>
                        <div id="datosingreso"></div>
-                        
-                       
+                       <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                        <label>Fecha:</label>
+                        <input type="date" class="form-control" name="fechaco" id="fechaco" value="<?php  echo date("Y-m-d"); ?>">
+                       </div> 
+                       <div class="form-group col-lg-2 col-md-3 col-xs-12">
+                        <label>Hora Monitoreo:</label>
+                        <div class="input-group clockpicker">
+                            <input type="text" class="form-control" name="horaconexion" id="horaconexion" value="<?php $hora2 =new DateTime("now", new DateTimeZone(' America/Guatemala')); echo $hora2->format('H:i:s'); ?>">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                        </div>
+                       <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                        <label>Retorno:</label>
+                        <input type="text" class="form-control" name="retorno" id="retorno" placeholder="Retorno" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                        <label>Set Point:</label>
+                        <input type="text" class="form-control" name="setpoint" id="setpoint" placeholder="Set Point" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                        <label>Suministro:</label>
+                        <input type="text" class="form-control" name="suministro" id="suministro" placeholder="Suministro" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        </div>
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>
@@ -84,6 +108,12 @@ if (!isset($_SESSION['nombre'])){
     }
     require 'footer.php';
     ?>
+<script>
+$('.clockpicker').clockpicker({
+    placement:'bottom',
+    donetext:'Aceptar'
+});
+</script>
 <script src="scripts/conexiones.js"></script>
 <?php
     
