@@ -44,6 +44,40 @@ if (!isset($_SESSION['nombre'])){
         </div>
     </section>
 </div>
+<div class="modal" id="getmodalConexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="titulo" name="titulo"></h4>
+            </div>
+            <div class="modal-body">
+                <form action="" name="formularioconex" id="formularioconex" method="POST">
+                    <div class="row">
+                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <input type="hidden" id="idconexion" name="idconexion">
+
+                            <label>Contenedor:</label>
+                            <select name="contenedor" id="contenedor" class="form-control select-picker" data-live-search="true">
+                            </select>
+                            <input type="hidden" id="idingreso" name="idingreso">
+
+                        </div>
+                       <div id="datosingreso"></div>
+                        
+                       
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>
+                            <button class="btn btn-danger pull-right" onclick="cancelarform()" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer"><div class="row"></div></div>
+        </div>
+    </div>
+</div>
         <?php
     }else{
         require 'noacceso.php';

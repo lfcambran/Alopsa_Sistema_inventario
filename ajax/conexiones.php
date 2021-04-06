@@ -33,4 +33,20 @@ switch ($_GET['op']){
         );
         echo json_encode($results);
         break;
+        case 'mostraringreso':
+            
+            $idingreso=$_REQUEST['idingreso'];
+            $rspta=$conexionc->datosingreso($idingreso);
+        while ($row = mysqli_fetch_array($rspta)){
+        echo '<div class="form-group col-lg-2 col-md-3 col-xs-12">'
+            . '<label>ORD:</label><input type="text" class="form-control" id="ord" name="ord" value="'.$row['Ord'].'" disabled="true">'
+            . '</div><div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Producto:</label><input type="text" class="form-control" value="'.$row['producto'].'" disabled="true"></div>'
+            . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Bloque:</label><input type="text" class="form-control" value="'.$row['Descripcion'].'" disabled="true"></div>'
+            . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Posicion:</label><input type="text" class="form-control" value="'.$row['noposicion'].'" disabled="true"></div>'
+            . '<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Barco:</label><input type="text" class="form-control" value="'.$row['Barco'].'" disabled="true"></div>'
+            . '<input type="hidden" id="id_f" name="id_f" value="'.$row['Id_f'].'">'
+            . '<input type="hidden" id="producto" name="producto" value="'.$row['producto'].'" >';
+        
+        }
+            break;
 }

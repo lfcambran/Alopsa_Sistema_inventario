@@ -11,4 +11,8 @@ class conexiones_c{
         $sql="CALL mostrar_conexiones()";
         return ejecutarConsulta($sql);
     }
+    public function datosingreso($ingreso){
+        $sql="call datosingreso('$ingreso')";
+        return ejecutarConsulta($sql);
+    }
 }
