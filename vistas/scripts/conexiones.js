@@ -6,6 +6,9 @@ function init(){
     $("#formularioconex").on("submit",function(e){
        guardaryeditar(e);
     });
+      $("#formularioautorizacion").on("submit",function(e){
+       validarusuario(e); 
+    });
 }
 function listar(){
     tabla=$('#tbllistadoconexion').dataTable({
@@ -47,6 +50,7 @@ function listarcomboingreso(){
 
 $("#contenedor").change(function(){
      var idingreso=$("#contenedor").val();
+     $("#idingreso").val(idingreso);
         mostraringreso(idingreso);
 });
 function mostraringreso(val){
@@ -78,9 +82,10 @@ function guardaryeditar(e){
            contentType: false,
            processData: false,
            success: function(datos){
-               var d = datos.substring(0,1);
+               
+               var d = datos.substring(0,2);
                if (d=='Se'){
-                   swal({icon:'success',title:'Conecxion', text:datos});
+                   swal({icon:'success',title:'Conexion', text:datos});
                    tabla.ajax.reload();
                     $('#getmodalConexion').modal('toggle');
                }else if (d=='Er'){
@@ -108,5 +113,71 @@ function limpiar(){
     $("#retorno").val("");
     $("#setpoint").val("");
     $("#suministro").val("");
+}
+function mostrar(id){
+    $.post("../ajax/conexiones.php?op=mostrar",{idconexion:id},
+        function(data,status){
+            data=JSON.parse(data);
+            $('#idconexion').val(data.Id);
+            $('#fechaco').val(data.Fecha_Conexion);
+            $('#horaconexion').val(data.Hora_De_Conexion);
+            $('#setpoint').val(data.Setpoint);
+            $('#retorno').val(data.Retorno);
+            $('#suministro').val(data.Suministro);
+            $('#contenedor').val(data.Id_ingreso);
+            $('#contenedor').selectpicker('refresh');
+            $('#idingreso').val(data.Id_ingreso);
+            mostraringreso(data.Id_ingreso);
+                mostrarform();
+        }
+    );
+}
+function dasactivar(id_conexion){
+    $("#getmodalau_m").modal('show');
+    $("#id_conexion").val(id_conexion);
+    
+}
+function validarusuario(e){
+    e.preventDefault();
+    $("#btnGuardar2").prop("disabled",false);
+    var usuario=$("#usuario").val();
+    var password=$("#password").val();
+    if ($("#usuario").val()==""){
+        swal({ title: "Parametro Requerido", text:"Debe de Ingresar su usuario para anular el ingreso"});
+    }else if ($("#password").val()=="") {
+        swal({title:"Parametro Requerido",text:'Debe de Ingresar su contraseña para continuar'});
+    }else{
+        $.post("../ajax/usuario.php?op=validaranulacion",{"logina":usuario,"clavea":password},
+        function(data){
+            if (data!="null"){
+                var idanular=$("#id_conexion").val();
+                desactivarcon(idanular,);
+            }else{
+                swal({title:'Anulacion Cancelada',title:"No cuenta con el acceso para anular el ingreso"})
+            }
+        }
+        );
+    }
+}
+
+function desactivarcon(val){
+    swal({
+  title: "Anulacion de Registro",
+  text: "Esta seguro de Anular la conexion seleccionada",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+      $.post("../ajax/conexiones.php?op=desactivar", {id_c : val}, function(e){
+				swal({icon:'success',title:'Anulacion de Conexion',title:e});
+                                $('#getmodalau_m').modal('toggle');
+				tabla.ajax.reload();
+			});
+  } else {
+    swal("se ha cancelo la accion!");
+  }
+});
 }
 init();

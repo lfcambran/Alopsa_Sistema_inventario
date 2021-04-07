@@ -20,9 +20,10 @@ switch ($_GET['op']){
     case 'guardaryeditar':
         if (empty($idconexion)){
             $rspta=$conexionc->insertar($fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf, $user_id);
-             echo $rspta ? 'Se Ingreso el Monitoreo Exitosamente':'Error al realizar el Monitoreo';
+             echo $rspta ? 'Se realizo Exitosamente la conexion':'Error al realizar el ingreso a la conexion';
         }else{
-            
+           $rspta=$conexionc->editar($idconexion,$fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf);
+           echo $rspta ? 'Se Actualizo correctaente el registro':'Error al tratar de actualizar el registro';
         }
         break;
     
@@ -68,4 +69,14 @@ switch ($_GET['op']){
         
         }
             break;
+        case 'mostrar':
+            $idcon=$_REQUEST['idconexion'];
+            $rspta=$conexionc->mostrarco($idcon);
+            echo json_encode($rspta);
+            break;
+    case 'desactivar':
+        $idcon=$_REQUEST['id_c'];
+        $rspta=$conexionc->desactivar($idcon);
+        echo $rspta ? "Conexion desactivados correctamente" : "No se pudo desactivar el Registro";
+        break;
 }
