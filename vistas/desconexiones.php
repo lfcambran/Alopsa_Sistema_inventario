@@ -19,6 +19,18 @@ if (!isset($_SESSION['nombre'])){
                         <div class="box-tools pull-right">
                                     <a href="../vistas/dashboard.php"><button class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> Volver</button></a>
                                 </div>
+                        <div class="panel-body table-responsive" id="listadesconexion">
+                            <table id="tbllisdesconexion" class="table table-striped table-bordered table-condensed table-hover">
+                                <thead>
+                                <th>Contenedor</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Total Horas</th>
+                                <th>No. Conexion</th>
+                                <th>Opciones</th>    
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

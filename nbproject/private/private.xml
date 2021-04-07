@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/inv_contenedores/index.php</file>
-            <file>file:/opt/lampp/htdocs/inv_contenedores/vistas/scripts/monitoreo.js</file>
-            <file>file:/opt/lampp/htdocs/inv_contenedores/vistas/conexiones.php</file>
-            <file>file:/opt/lampp/htdocs/inv_contenedores/vistas/scripts/conexiones.js</file>
-            <file>file:/opt/lampp/htdocs/inv_contenedores/ajax/conexiones.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/conexiones.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/monitoreo.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/conexiones.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/monitoreo.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/conexiones.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/config/Conexion.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/header.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/config/global.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/usuario.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/index.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/conexiones.php</file>
         </group>
     </open-files>
 </project-private>
