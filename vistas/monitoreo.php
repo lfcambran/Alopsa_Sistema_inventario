@@ -46,8 +46,7 @@ if (!isset($_SESSION['nombre'])){
     </section>
 </div>
 
-<div class="modal" id="getmodalm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static" 
-  data-keyboard="false">
+<div class="modal" id="getmodalm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,7 +113,7 @@ if (!isset($_SESSION['nombre'])){
             </div>
             <div class="modal-footer">
             
-        </div>
+            </div>
         </div>
         
     </div>
@@ -145,7 +144,7 @@ if (!isset($_SESSION['nombre'])){
             </div>
         </div>
     </div>
-</div>
+
         <?php
     }else{
         require 'noacceso.php';

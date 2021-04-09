@@ -112,7 +112,9 @@ function limpiar(){
     $("#setpoint").val("");
     $("#suministro").val("");
     $("#mecanico").val("");
-    $("#observaciones").val();
+    $("#observaciones").val("");
+    $("#idmonitoreo").val("");
+    $("#titulo").html("");
     
 }
 function mostrar(id){
