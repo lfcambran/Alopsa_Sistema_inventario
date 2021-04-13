@@ -96,10 +96,10 @@ if (!isset($_SESSION['nombre'])){
                         <input type="text" class="form-control" name="retorno" id="retorno" placeholder="Retorno" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
                         <div class="form-group col-lg-2 col-md-3 col-xs-12">
-                           <label>Temperatura</label>
+                           <label>Temperatura °</label>
                            <select id="temperatura" name="temperatura" class="form-control">
-                               <option>F</option>
-                               <option>C</option>
+                               <option value="F">F</option>
+                               <option value="C">C</option>
                            </select>
                        </div>
                         <div class="form-group col-lg-3 col-md-3 col-xs-12">

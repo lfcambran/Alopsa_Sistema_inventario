@@ -79,6 +79,13 @@ if (!isset($_SESSION['nombre'])){
                             </span>
                         </div>
                         </div>
+                       <div class="form-group col-lg-2 col-md-3 col-xs-12">
+                           <label>Temperatura</label>
+                           <select id="temperatura" name="temperatura" class="form-control">
+                               <option value="F">F</option>
+                               <option value="C">C</option>
+                           </select>
+                       </div>
                        <div class="form-group col-lg-3 col-md-3 col-xs-12">
                         <label>Retorno:</label>
                         <input type="text" class="form-control" name="retorno" id="retorno"  autocomplete="off" placeholder="Retorno" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
@@ -91,7 +98,7 @@ if (!isset($_SESSION['nombre'])){
                         <label>Suministro:</label>
                         <input type="text" class="form-control" name="suministro"  autocomplete="off" id="suministro" placeholder="Suministro" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                         </div>
-                       
+                        
                     </div>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>

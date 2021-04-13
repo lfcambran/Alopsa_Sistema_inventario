@@ -123,10 +123,10 @@ if ($_SESSION['ingresoc']==1) {
             <li><a href="ingresosm.php"><i class="fa fa-ship"></i>Ingreso Maestro</a></li>
           </ul>
           <ul class="treeview-menu">
-            <li><a href="monitoreo.php"><i class="fa fa-desktop"></i>Monitoreo</a></li>
-          </ul>
-          <ul class="treeview-menu">
             <li><a href="conexiones.php"><i class="fa fa-plug"></i>Conexion</a></li>
+          </ul>
+           <ul class="treeview-menu">
+            <li><a href="monitoreo.php"><i class="fa fa-desktop"></i>Monitoreo</a></li>
           </ul>
           <ul class="treeview-menu">
           <li><a href="desconexiones.php"><i class="fa fa-minus-circle"></i>Desconexion</a></li>

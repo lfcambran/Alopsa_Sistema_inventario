@@ -15,15 +15,16 @@ $mecanico= isset($_POST['mecanico'])? limpiarCadena($_POST['mecanico']):"";
 $observaciones=isset($_POST['observaciones'])? limpiarCadena($_POST['observaciones']):"";
 $idf=isset($_POST['id_f'])? limpiarCadena($_POST['id_f']):"";
 $producto=isset($_POST['producto'])? limpiarCadena($_POST['producto']):"";
+$temperatura= isset($_POST['temperatura'])? limpiarCadena($_POST['temperatura']):"";
 $user_id=$_SESSION['idusuario'];
 
 switch ($_GET['op']){
     case 'guardaryeditar':
         if (empty($id)){
-            $rspta=$monitoreo->insertar($horamonitoreo,$retorno,$observaciones,$producto,$setpoint,$suministro,$fechamonitoreo,$mecanico,$idingreso,$idf,$user_id);
+            $rspta=$monitoreo->insertar($horamonitoreo,$retorno,$observaciones,$producto,$setpoint,$suministro,$fechamonitoreo,$mecanico,$idingreso,$idf,$user_id,$temperatura);
             echo $rspta ? 'Se Ingreso el Monitoreo Exitosamente':'Error al realizar el Monitoreo';
         }else{
-            $rspta=$monitoreo->editar($id,$horamonitoreo,$retorno,$observaciones,$producto,$setpoint,$suministro,$fechamonitoreo,$mecanico,$idingreso,$idf);
+            $rspta=$monitoreo->editar($id,$horamonitoreo,$retorno,$observaciones,$producto,$setpoint,$suministro,$fechamonitoreo,$mecanico,$idingreso,$idf,$temperatura);
              echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos"; 
         }
         break;
@@ -57,7 +58,7 @@ switch ($_GET['op']){
         $rspta=$monitoreo->listar_ingreso();
         echo '<option value="0">Selecione Ingreso</option>';
         while ($reg=$rspta->fetch_object()){
-            echo '<option value='.$reg->Id_Ingreso.'>'.$reg->Id_Ingreso.'-'.$reg->No_Contenedor.'</option>';
+            echo '<option value='.$reg->Id.'>'.$reg->Id.'-'.$reg->No_Contenedor.'</option>';
         }
         break;
     case 'mostraringreso':

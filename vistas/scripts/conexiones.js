@@ -42,7 +42,7 @@ function mostrarform(){
     $("#getmodalConexion").modal('toggle');
 }
 function listarcomboingreso(){
-    $.post("../ajax/monitoreo.php?op=listaringreso",function(r){
+    $.post("../ajax/conexiones.php?op=listaringreso",function(r){
         $("#contenedor").html(r);
         $("#contenedor").selectpicker('refresh');
     });
