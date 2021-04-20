@@ -15,15 +15,16 @@ $setpoint= isset($_POST['setpoint'])? limpiarCadena($_POST['setpoint']):"";
 $suministro= isset($_POST['suministro'])? limpiarCadena($_POST['suministro']):"";
 $idf=isset($_POST['id_f'])? limpiarCadena($_POST['id_f']):"";
 $temperatura= isset($_POST['temperatura'])? limpiarCadena($_POST['temperatura']):"";
+$tipoconexion= isset($_POST['tipoconexion'])? limpiarCadena($_POST['tipoconexion']):"";
 $user_id=$_SESSION['idusuario'];
 
 switch ($_GET['op']){
     case 'guardaryeditar':
         if (empty($idconexion)){
-            $rspta=$conexionc->insertar($fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf, $user_id,$temperatura);
+            $rspta=$conexionc->insertar($fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf, $user_id,$temperatura,$tipoconexion);
              echo $rspta ? 'Se realizo Exitosamente la conexion':'Error al realizar el ingreso a la conexion';
         }else{
-           $rspta=$conexionc->editar($idconexion,$fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf,$temperatura);
+           $rspta=$conexionc->editar($idconexion,$fechaconexion, $horaconexion, $setpoint, $suministro, $retorno, $id_ingreso, $idf,$temperatura,$tipoconexion);
            echo $rspta ? 'Se Actualizo correctaente el registro':'Error al tratar de actualizar el registro';
         }
         break;
@@ -87,5 +88,5 @@ switch ($_GET['op']){
             echo '<option value='.$reg->Id_Ingreso.'>'.$reg->Id_Ingreso.'-'.$reg->No_Contenedor.'</option>';
         }
         break;
-        break;
+        
 }

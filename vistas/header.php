@@ -104,7 +104,7 @@ if (strlen(session_id())<1)
 <br>
        <?php 
 if ($_SESSION['dashboard']==1) {
-  echo ' <li><a href="#"><i class="fa  fa-dashboard (alias)"></i> <span>Dashboard</span></a>
+  echo ' <li><a href="../vistas/dashboard.php"><i class="fa  fa-dashboard (alias)"></i> <span>Dashboard</span></a>
         </li>';
 }
         ?> 

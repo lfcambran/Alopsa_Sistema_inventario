@@ -6,12 +6,12 @@ class conexiones_c{
     public function __construct() {
         
     }
-    public function insertar($fechac,$horacon,$setpoint,$suministro,$retorno,$idingreso,$idf,$idusuario,$temperatura){
-        $sql="CALL insertar_cone('$fechac','$horacon',$setpoint,$suministro,$retorno,$idingreso,$idf,'$idusuario','$temperatura')";
+    public function insertar($fechac,$horacon,$setpoint,$suministro,$retorno,$idingreso,$idf,$idusuario,$temperatura,$tipoconexion){
+        $sql="CALL insertar_cone('$fechac','$horacon',$setpoint,$suministro,$retorno,$idingreso,$idf,'$idusuario','$temperatura','$tipoconexion')";
         return ejecutarConsulta($sql);
     }
-    public function editar($idcon,$fechac,$horacon,$setpoint,$suministro,$retorno,$idingreso,$idf,$temperatura){
-         $sql="CALL actualizar_conexion($idcon,'$fechac','$horacon',$setpoint,$suministro,$retorno,$idingreso,$idf,'$temperatura')";
+    public function editar($idcon,$fechac,$horacon,$setpoint,$suministro,$retorno,$idingreso,$idf,$temperatura,$tipoconexion){
+         $sql="CALL actualizar_conexion($idcon,'$fechac','$horacon',$setpoint,$suministro,$retorno,$idingreso,$idf,'$temperatura','$tipoconexion')";
         return ejecutarConsulta($sql);
     }
     public function listar(){
