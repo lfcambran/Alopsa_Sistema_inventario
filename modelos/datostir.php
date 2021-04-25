@@ -18,4 +18,8 @@ class datostir{
          $sql="call datosingreso_datostir('$ingreso')";
         return ejecutarConsulta($sql);
     }
+    public function listar_danios($ufalla){
+        $sql="select * from dfallatir where utfalla='$ufalla'";
+        return ejecutarConsulta($sql);
+    }
 }

@@ -169,26 +169,49 @@ if (!isset($_SESSION['nombre'])){
                             <div class="form-group col-lg-3">
                                 <label>Daños/Faltantes</label>
                                  <select name="ubicacion" id="ubicacion" class="form-control select-picker" data-live-search="true">
+                                     <option value="">Seleccione..</option>
                                     <option value="inex">Interior/Exterior</option>
                                     <option value="puerta">Puertas</option>
                                     <option value="chasis">Chasis</option>
                                     <option value="llantas">Llantas</option>
                                 </select>
                             </div>
+                            <div class="form-group col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                                <label>Opciones Daños</label>
+                                <select name="opcionesd" id="opcionesd" class="form-control select-picker" data-live-search="true"></select>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                               <label>Observacion</label>
+                                <textarea name="observacionf" id="observacionf" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <div align="center">
+                                    <p></p><br>
+                                    <button id="agregar" type="button" name="agregar" class="btn btn-success"><i class="fa fa-plus-circle"></i>  Agregar</button>
+                                </div>
+                            </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <table id="tablafallastir" class="tabla table-bordered table-responsive table-hover">
+                            <table id="tablafallastir" class="tabla table-responsive table-striped ">
                                 <thead>
-
+                                    <th>#</th>
                                     <th>Ubicacion</th>
                                     <th>Descripcion daño</th>
                                     <th>Opcion</th>
                                     <th>Observaciones</th>
                                     <th>Borrar</th>
                                 </thead>
+                                <tbody id="table_data">
+                                
+                                </tbody>
                             </table>
                             </div>
                         </div>
-
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label>Observaciones:</label>
+                                    <textarea id="observaciones" name="observaciones" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>  
                    </div>
                 </form>
@@ -204,6 +227,7 @@ if (!isset($_SESSION['nombre'])){
     
     ?>
 <script  type="text/javascript">
+
 $('.clockpicker').clockpicker({
      donetext: 'Done'
 });

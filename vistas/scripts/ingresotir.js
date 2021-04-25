@@ -1,5 +1,6 @@
 var tabla;
 var tabla2;
+var  i =1;
 init();
 
 function init(){
@@ -35,6 +36,7 @@ function listar(){
 
 function tabladanios(){
     tabla2=$('#tablafallastir').dataTable({
+      
     }).DataTable();
 }
 function mostrarmodal(){
@@ -57,7 +59,42 @@ function listarcomboingreso(){
 $("#contenedor").change(function(){
      var idingreso=$("#contenedor").val();
     mostraringreso(idingreso);
-})
+});
+$("#ubicacion").change(function(){
+    var opcionu=$("#ubicacion").val();
+    mostrardanios(opcionu);
+});
+$('#agregar').click(function(){
+    var ubicacion = document.getElementById("ubicacion");
+    var ubic=ubicacion.options[ubicacion.selectedIndex].text;
+    var opd=document.getElementById("opcionesd");
+    var opciond =opd.options[opd.selectedIndex].text;
+    var observacion = $('#observacionf').val();
+       
+    tabla2.row.add([i,ubic,opciond,'SI',observacion,'<button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button>']).draw(false);
+    i++;
+    $('#ubicacion').val("");
+    $('#ubicacion').selectpicker('refresh');
+    $('#opcionesd').val("");
+    $('#opcionesd').selectpicker('refresh');
+    $("#observacionf").val("");
+    $("#tablafallastir").DataTable();
+    
+});
+
+$(document).on('click','.btn_remove', function(){
+       tabla2.row('.selected').remove().draw( false );  
+       i=i-1;
+});
+ $('#tablafallastir tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            tabla2.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
 function mostraringreso(val){
     $.ajax({
        url:'../ajax/daniostir.php?op=mostraringreso',
@@ -68,4 +105,10 @@ function mostraringreso(val){
             $('#datosingreso').html(resp);
        }
     });
+}
+function mostrardanios(val){
+    $.post("../ajax/daniostir.php?op=listardanios",{udanio:val} ,function(r){
+        $("#opcionesd").html(r);
+        $("#opcionesd").selectpicker('refresh');
+    })
 }

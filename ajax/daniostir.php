@@ -57,5 +57,13 @@ switch ($_GET['op']){
 
             }
             break;
-            
+       case 'listardanios':
+           $utfalla=$_REQUEST['udanio'];
+           $rspta=$datosTIR->listar_danios($utfalla);
+           echo '<option value="0">Seleccione..</option>';
+           while ($reg=$rspta->fetch_object()){
+               echo '<option value='.$reg->falla.'>'.$reg->falla.'</option>';
+           }
+           
+           break;
 }
