@@ -152,8 +152,29 @@ function mostrardanios(val){
 }
 function guardaryeditar(e){
     e.preventDefault();
+    var error=0;
+    var mensajeerror="";
+    if( $('#checkin:checked').val() ) {
+       if (error>=0){
+                error=error-1
+            }else{error=0}
+    }else{mensajeerror=mensajeerror+'No se ha Seleccionado una opcion GATE IN. \n';error+=1;}
+    if ($('#checkout:checked').val()){
+            if (error>=0){
+                error=error-1
+            }else{error=0}
+            }else{
+              mensajeerror=mensajeerror+'o No se ha Seleccionado GATE OUT. \n';error+=1;  
+            }
     $("#btnGuardar").prop("disabled",false);
     var formdata=new FormData($("#formulariotir")[0]);
+     if (error==0){
+         if($("#contenedor").val()==0){
+             swal({title:"Ingreso de TIR",icon:'warning',text:'Debe de seleccionar el contenedor'});
+         }else if($(chassis).val()==''){
+             swal({title:"Ingreso de TIR",icon:'warning',text:'Debe de ingresar el no. chassis'});
+         }
+         else{
      $.ajax({
        url: "../ajax/daniostir.php?op=guardaryeditar",
        type: "POST",
@@ -165,13 +186,21 @@ function guardaryeditar(e){
            var cadena=datos.substring(0,2);
            if (cadena>=0){
                enviadetallefallas(cadena)
-           }else if (d=='Er'){
+           }else if (datos=='Er'){
                 swal({icon:'Error',title:'Error al Grabar',text:datos})
            }
    
           
-       }
-    });
+          }
+        })
+    }
+    }else {
+       swal({
+           title:'Error al grabar',
+           icon: 'warning',
+           text: 'Se ha encontrado los siguientes errores: '+ mensajeerror
+       })
+    };
 }
 function cancelarform(){
     limpiar();
@@ -197,6 +226,10 @@ function limpiar(){
     $('#chassis').val('');
     $('#fecha').val(today);
     $('#hora').val(horaactual);
+    $('#observaciones').val("");
+    $('#cliente').val("");
+    $("#contenedor").val(false).trigger("change");
+    listarcomboingreso();
     eliminar_tabla();
     
     
@@ -216,13 +249,15 @@ function enviadetallefallas(val){
         var ubic=$(this).find('td').eq(1).text();
         var descripd=$(this).find('td').eq(2).text();
         var opcion=$(this).find('td').eq(3).text();
-        var obser=$(this).find('td').eq(4).text();
+        var posicion=$(this).find('td').eq(4).text();
+        var obser=$(this).find('td').eq(5).text();
         
         var fila={
           val,
           ubic,
           descripd,
           opcion,
+          posicion,
           obser
         };
         filas.push(fila);

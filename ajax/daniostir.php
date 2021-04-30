@@ -5,7 +5,58 @@ if (strlen(session_id())<1)
 
 require '../modelos/datostir.php';
 $datosTIR=new datostir;
+$idtir=isset($_POST['idintir'])? limpiarCadena($_POST['idintir']):"";
+$contenedor= isset($_POST['contenedor'])? limpiarCadena($_POST['contenedor']):'';
+$serietir= isset($_POST['serie_tir'])? limpiarCadena($_POST['serie_tir']):"";
+$chasis= isset($_POST['chassis'])? limpiarCadena($_POST['chassis']):"";
+$tchissis= isset($_POST['tipochasis'])? limpiarCadena($_POST['tipochasis']):'';
+$refr=isset($_POST['refrigeracion'])? limpiarCadena($_POST['refrigeracion']):'';
+$tcon= isset($_POST['tipocontenedor'])? limpiarCadena($_POST['tipocontenedor']):'';
+$fecha= isset($_POST['fecha'])? limpiarCadena($_POST['fecha']):'';
+$hora= isset($_POST['hora'])? limpiarCadena($_POST['hora']):'';
+$tmingreso= isset($_POST['checkin'])? limpiarCadena($_POST['checkin']):'';
+$tmsalida= isset($_POST['checkout'])? limpiarCadena($_POST['checkout']):'';
+$consi= isset($_POST['vaciosi'])? limpiarCadena($_POST['vaciosi']):'';
+$conno= isset($_POST['vaciono'])? limpiarCadena($_POST['vaciono']):'';
+$izq= isset($_POST['izquierda'])? limpiarCadena($_POST['izquierda']):'';
+$der= isset($_POST['derecha'])? limpiarCadena($_POST['derecha']):'';
+$fre= isset($_POST['frente'])? limpiarCadena($_POST['frente']):'';
+$int= isset($_POST['interior'])? limpiarCadena($_POST['interior']):'';
+$tra=isset($_POST['trasero'])? limpiarCadena($_POST['trasero']):'';
+$tec=isset($_POST['techo'])? limpiarCadena($_POST['techo']):'';
+$cha= isset($_POST['chasis'])? limpiarCadena($_POST['chasis']):'';
+$obser= isset($_POST['observaciones'])? limpiarCadena($_POST['observaciones']):'';
+$cli= isset($_POST['cliente'])? limpiarCadena($_POST['cliente']):'';
+$dest= isset($_POST['destino'])? limpiarCadena($_POST['destino']):'';
+$nav= isset($_POST['naviera'])? limpiarCadena($_POST['naviera']):'';
+$idf = isset($_POST['idf'])? limpiarCadena($_POST['idf']):'';
 switch ($_GET['op']){
+           case 'guardaryeditar':
+           if ($tmingreso==on){
+               $tipomov='Ingreso';
+           }else if($tmsalida==on){
+               $tipomov='Salida';
+           }
+           if ($consi==on){
+               $convasio='si';
+           }else if($conno==on){
+               $convasio='no';
+           }
+           if ($izq==on){$izqu=true;}else{$izqu=false;}
+           if ($der==on){$dere=true;}else{$dere=false;}
+           if ($fre==on){$fren=true;}else{$fren=false;}
+           if ($int==on){$inte=true;}else{$inte=false;}
+           if ($tra==on){$tras=true;}else{$tras=false;}
+           if ($tec==on){$tech=true;}else{$tech=false;}
+           if ($cha==on){$chas=true;}else{$chas=false;}
+           if (empty($idtir)){
+               $rspta=$datosTIR->Insertar();
+               echo $rspta ;
+           }else{
+               
+           }
+           
+           break;
        case 'listar':
            $rspta=$datosTIR->listar();
            $datos_tir=array();
@@ -14,16 +65,15 @@ switch ($_GET['op']){
                     "0"=>$reg->No_Contenedor,
                     "1"=>$reg->chassis,
                     "2"=>$reg->SerieTir,
-                    "3"=>$reg->numeroTIR,
-                    "4"=>$reg->fecha,
-                    "5"=>$reg->hora,
-                    "6"=>$reg->Transporte,
-                    "7"=>$reg->Nombre_de_Piloto,
-                    "8"=>$reg->Placas,
-                    "9"=>$reg->Destino,
-                    "10"=>$reg->vacio,
-                    "11"=>$reg->cliente,
-                    "12"=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idtir.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Monitoreo"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->idtir.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular Monitoreo"></i></button> '
+                    "3"=>$reg->fecha,
+                    "4"=>$reg->hora,
+                    "5"=>$reg->Transporte,
+                    "6"=>$reg->Nombre_de_Piloto,
+                    "7"=>$reg->Placas,
+                    "8"=>$reg->Destino,
+                    "9"=>$reg->vacio,
+                    "10"=>$reg->cliente,
+                    "11"=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idtir.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Monitoreo"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->idtir.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular Monitoreo"></i></button> '
                 );
             }
             $results=array(
@@ -46,14 +96,14 @@ switch ($_GET['op']){
             $idingreso=$_REQUEST['iding'];
             $rspta=$datosTIR->datosingreso($idingreso);
             while ($row= mysqli_fetch_array($rspta)){
-            echo '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Chassis</label><input type="text" class="form-control" id="chassis" name="chassis" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required></div>'
+            echo '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Chassis</label><input type="text" class="form-control" id="chassis" name="chassis" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"></div>'
                 . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>ORD</label><input type="text" class="form-control" id="ord" name="ord" value="'.$row['ord'].'" disabled="true"></div>'
-                .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Transportista</label><input type="text" class="form-control" value="'.$row['Transporte'].'" disabled="true"> </div>'
+                .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Transportista</label><input type="text" class="form-control" value="'.$row['Transporte'].'" disabled="true"><input type="hidden" id="naviera" name="naviera" value="'.$row['Transporte'].'" > </div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Piloto</label><input type="text" class="form-control" value="'.$row['Nombre_de_Piloto'].'" disabled="true"></div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Licencia</label><input type="text" class="form-control" value="'.$row['Licencias'].'" disabled="true"></div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Placas</label><input type="text" class="form-control" value="'.$row['Placas'].'" disabled="true"></div>'
                 .'<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Codigo</label><input type="text" class="form-control" value="'.$row['Codigo_Piloto_Naviera'].'" disabled="true"></div>'
-                .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Destino</label><input type="text" class="form-control" value="'.$row['Destino'].'" disabled="true"></div>';
+                .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Destino</label><input type="text" class="form-control" id="destino" name="destino" value="'.$row['Destino'].'" disabled="true"><input type="hidden" id="idf" name="idf" value="'.$row['Id_f'].'"></div>';
 
             }
             break;
@@ -80,8 +130,7 @@ switch ($_GET['op']){
                echo '<option value='.$reg->descripcion.'>'.$reg->descripcion.'</option>';
            }
            break;
-       case 'guardaryeditar':
-           break;
+
        case 'enviardetalle':
             $insertado=0;
            $dfilas = json_decode($_POST['datosfilas'],true);
@@ -91,11 +140,12 @@ switch ($_GET['op']){
                $desc=$filas['descripd'];
                $op=$filas['opcion'];
                $ob=$filas['obser'];
+               $pos=$filas['posicion'];
                if ($op=='SI'){
                    $op1=1;
                }else{$op1=0;}
                    
-                 $rspta=$datosTIR->inserta_detalle_tir($item,$ubica,$desc,$op1,$ob);
+                 $rspta=$datosTIR->inserta_detalle_tir($item,$ubica,$desc,$op1,$pos,$ob);
                  if($rspta==true){
                      $insertado=$insertado+1;
                  }

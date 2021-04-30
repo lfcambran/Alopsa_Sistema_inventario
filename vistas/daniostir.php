@@ -34,7 +34,7 @@ if (!isset($_SESSION['nombre'])){
                             <thead>
                             <th>Contenedor</th>
                             <th>Chasis</th>
-                            <th>serie No.</th>
+                            <th>serie</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Transportista</th>
@@ -65,11 +65,12 @@ if (!isset($_SESSION['nombre'])){
 
                     <div class="row">
                           <div class="form-group col-lg-1 col-md-12 col-sm-12 col-xs-12">
-                            <label>Serie:</label>
+                                <input id="idintir" name="idintir" type="hidden">
+                              <label>Serie:</label>
                             <input type="text" class="form-control" id="serie_tir" name="serie_tir" value="A">
                         </div>
                         <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <input id="idintir" name="idintir" type="hidden">
+                          
                             <label>Contenedor:</label>
                                 <select name="contenedor" id="contenedor" class="form-control select-picker" data-live-search="true">
                                 </select>
@@ -108,14 +109,13 @@ if (!isset($_SESSION['nombre'])){
                             </div>
                           </div>
                         <div class="form-group col-lg-2 col-md-3 col-xs-12">
-                            <label> GATE IN <input type="checkbox" class="minimal" id="checkin" checked="true" ></label>
-                            
-                           <label> GATE OUT <input type="checkbox" class="minimal" id="checkout"  ></label>
+                            <label> GATE IN <input type="checkbox" class="minimal" id="checkin" name="checkin" checked="true" ></label>
+                            <label> GATE OUT <input type="checkbox" class="minimal" id="checkout" name="checkout" ></label>
                            
                         </div>
                         <div class="form-group col-lg-2 col-md-3 col-xs-12">
-                            <label> Vacio SI <input type="checkbox" class="minimal" id="vaciosi" checked="true"></label>
-                            <label> Vacio NO <input type="checkbox" class="minimal" id="vaciono" ></label>
+                            <label> Vacio SI <input type="checkbox" class="minimal" id="vaciosi" name="vaciosi" checked="true"></label>
+                            <label> Vacio NO <input type="checkbox" class="minimal" id="vaciono" name="vaciono" ></label>
                         </div>
                     </div>
                     <div class="box box-info">
@@ -127,49 +127,49 @@ if (!isset($_SESSION['nombre'])){
                                 <div align="center">
                                 <label>Izquierda</label>
                                 <img src="../files/server/izquierda.png" alt=""/>
-                                <input type="checkbox" class="flat-red" id="izquierda">
+                                <input type="checkbox" class="flat-red" id="izquierda" name="izquierda">
                                 </div>
                             </div>
                             <div class="form-group col-lg-2">
                                 <div align="center">
                                     <label>Derecha</label>
                                     <img src="../files/server/derecha.png" alt="" />
-                                    <input type="checkbox" class="flat-red" id="derecha">
+                                    <input type="checkbox" class="flat-red" id="derecha" name="derecha">
                                 </div>
                             </div>
                             <div class="form-group col-lg-1 col-md-3">
                                 <div align="center">
                                     <label> Frente </label>
                                     <img src="../files/server/frente.png" alt=""/>
-                                    <input type="checkbox" class="flat-red" id="frente">
+                                    <input type="checkbox" class="flat-red" id="frente" name="frente">
                                 </div>
                             </div>
                             <div class="form-group col-lg-2">
                                 <div align="center">
                                     <label>Interior</label>
                                     <img src="../files/server/interior.png" alt=""/>
-                                    <input type="checkbox" class="flat-red" id="interior">
+                                    <input type="checkbox" class="flat-red" id="interior" name="interio">
                                 </div>
                             </div>
                              <div class="form-group col-lg-1">
                                 <div align="center">
                                     <label>Trasero</label>
                                     <img src="../files/server/trasero.png" alt=""/>
-                                    <input type="checkbox" class="flat-red" id="trasero">
+                                    <input type="checkbox" class="flat-red" id="trasero" name="trasero">
                                 </div>
                             </div>
                              <div class="form-group col-lg-2 ">
                                 <div align="center">
                                     <label>Techo</label>
                                     <img src="../files/server/techo.png" alt=""/>
-                                    <input type="checkbox" class="flat-red" id="techo">
+                                    <input type="checkbox" class="flat-red" id="techo" name="techo">
                                 </div>
                             </div>
                              <div class="form-group col-lg-2">
                                 <div align="center">
                                     <label>Chasis</label>
                                     <img src="../files/server/chasis.png" alt=""/>
-                                    <input type="checkbox" class="flat-red" id="chasis">
+                                    <input type="checkbox" class="flat-red" id="chasis" name="chasis">
                                 </div>
                             </div>
                         </div>
@@ -240,7 +240,7 @@ if (!isset($_SESSION['nombre'])){
                    </div>
                      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Grabar</button>
-                        <button clsdd="btn btn-success" onclick="enviadetallefallas(1)">prueba</button>
+                        
                         <button class="btn btn-danger pull-right" onclick="cancelarform()" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                     </div>
                 </form>
