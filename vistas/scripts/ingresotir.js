@@ -303,19 +303,67 @@ function mostrar(val){
         $('#fecha').val(datostir.fecha);
         $('#hora').val(datostir.hora);
         if (datostir.fallaizq==1){
-           
-              var c = $("#izquierda");
-                if (c.is(":checked")) {
-                     $('#izquierda').prop('checked', false);
-                } else {
-                     $('#izquierda').prop('checked', true);
-                }
-                 $('#izquierda').prop('checked', true).checkbox('refresh');
-          
+               $('#izquierda').prop('checked', true);
+               $('#izquierda').iCheck('update');                 
         }
+        if (datostir.fallader==1){
+            $('#derecha').prop('checked',true);
+            $('#derecha').iCheck('update');
+        }
+        if (datostir.fallafre==1){
+            $('#frente').prop('checked',true);
+            $('#frente').iCheck('update');
+        }
+        if (datostir.fallainte==1){
+            $('#interior').prop('checked',true);
+            $('#interior').iCheck('update');
+        }
+        if (datostir.fallatra==1){
+            $('#trasero').prop('checked',true);
+            $('#trasero').iCheck('update');
+        }
+        if (datostir.fallatec==1){
+            $('#techo').prop('checked',true);
+            $('#techo').iCheck('update');
+        }
+        if (datostir.fallachas==1){
+            $('#chasis').prop('checked',true);
+            $('#chasis').iCheck('update');
+        }
+        if (datostir.vacio=='si'){
+            $('#vaciosi').prop('checked',true);
+            $('#vaciosi').iCheck('update');
+        }else if(datostir.vacio=='no'){
+            $('#vaciono').prop('checked',true);
+            $('#vaciono').iCheck('update');
+        }
+            $('#checkin').prop('checked',true);
+            $('#checkin').iCheck('update');
+        $('#cliente').val(datostir.cliente);
+        $('#observaciones').val(datostir.observaciones);
         $('#chassis').val(datostir.chassis);
-        mostrarmodal();
+        llenartabla_detalle(datostir.idtir);
+        
     }
     );
     
+}
+function llenartabla_detalle(val){
+    tabla2.destroy();
+    tabla2=$('#tablafallastir').DataTable({
+        "ajax":{
+            url:'../ajax/daniostir.php?op=detalletir',
+            data:{idtird:val},
+            type:'get',
+            dataType: 'json',
+            error:function(e){
+              console.log(e.responseText);
+          },
+          "bDestroy":true,
+        "iDisplayLength":10,
+        "order":[[0,"asc"]]
+        }
+    });
+    mostrarmodal();
+     
 }

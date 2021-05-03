@@ -46,4 +46,8 @@ class datostir{
         $sql="CALL mostrar_datos_tir($idtir)";
         return ejecutarConsultaSimpleFila($sql);
     }
+    public function listar_detallatir($idtir){
+        $sql="select * from fallas_tir where id_datostir=$idtir";
+        return ejecutarConsulta($sql);
+    } 
 }

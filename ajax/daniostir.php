@@ -160,5 +160,33 @@ switch ($_GET['op']){
            $id_tir=$_REQUEST['idtir'];
            $rspta=$datosTIR->mostrar_tir($id_tir);
            echo json_encode($rspta);
-               break;
+           break;
+       case 'detalletir':
+           $id_tir=$_REQUEST['idtird'];
+           $rspta=$datosTIR->listar_detallatir($id_tir);
+           $datosdet=array();
+           $contador=0;
+           while ($reg=$rspta->fetch_object()){
+               $contador+=1;
+               if ($reg->opcionfalla==1)
+               {$opcion='SI';}else{$opcion='NO';}
+               $datos[]=array(
+                   '0'=>$contador,
+                   '1'=>$reg->ubicacion,
+                   '2'=>$reg->falla,
+                   '3'=>$opcion,
+                   '4'=>$reg->Posicion,
+                   '5'=>$reg->observacion,
+                   '6'=>'<button type="button" name="remove" id="'.$contador.'" class="btn btn-danger btn_remove">Quitar</button>'
+               );
+           }
+           $resultas=array(
+               "sEcho"=>1,
+               "iTotalRecords"=> count($datos),
+               "iTotalDisplayRecords"=> count($datos),
+                "aaData"=>$datos
+           );
+           echo json_encode($resultas);
+           break;
+               
 }
