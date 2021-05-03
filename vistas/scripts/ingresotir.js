@@ -230,6 +230,21 @@ function limpiar(){
     $('#observaciones').val("");
     $('#cliente').val("");
     $("#contenedor").val(false).trigger("change");
+    $('#izquierda').prop('checked', false);
+    $('#izquierda').iCheck('update');
+    $('#derecha').prop('checked',false);
+    $('#derecha').iCheck('update');
+    $('#frente').prop('checked',false);
+    $('#frente').iCheck('update');
+    $('#interior').prop('checked',false);
+    $('#interior').iCheck('update');
+    $('#trasero').prop('checked',false);
+    $('#trasero').iCheck('update');
+    $('#techo').prop('checked',false);
+    $('#techo').iCheck('update');
+    $('#chasis').prop('checked',false);
+    $('#chasis').iCheck('update');
+    
     listarcomboingreso();
     eliminar_tabla();
     
