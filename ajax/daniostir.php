@@ -97,8 +97,7 @@ switch ($_GET['op']){
             $idingreso=$_REQUEST['iding'];
             $rspta=$datosTIR->datosingreso($idingreso);
             while ($row= mysqli_fetch_array($rspta)){
-            echo '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Chassis</label><input type="text" class="form-control" id="chassis" name="chassis" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"></div>'
-                . '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>ORD</label><input type="text" class="form-control" id="ord" name="ord" value="'.$row['ord'].'" disabled="true"></div>'
+            echo '<div class="form-group col-lg-2 col-md-3 col-xs-12"><label>ORD</label><input type="text" class="form-control" id="ord" name="ord" value="'.$row['ord'].'" disabled="true"></div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Transportista</label><input type="text" class="form-control" value="'.$row['Transporte'].'" disabled="true"><input type="hidden" id="naviera" name="naviera" value="'.$row['Transporte'].'" > </div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Piloto</label><input type="text" class="form-control" value="'.$row['Nombre_de_Piloto'].'" disabled="true"></div>'
                 .'<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Licencia</label><input type="text" class="form-control" value="'.$row['Licencias'].'" disabled="true"></div>'
@@ -132,13 +131,13 @@ switch ($_GET['op']){
            }
            break;
        case 'actualizadetalle':
-           $dfilas= json_decode($_POST['datosfilas'],true);
+           $dfilas= json_decode($_POST['datosfila'],true);
            $idtir=$_POST['id_tir'];
            $cont=0;
            $notir=0;
            $counitem=0;
            foreach ($dfilas as $filas){
-               $item= substr($filas['val'], -2);
+               $item= substr($filas['id_c'], -2);
                 $ubica=$filas['ubic'];
                 $desc=$filas['descripd'];
                 $op=$filas['opcion'];
@@ -149,7 +148,7 @@ switch ($_GET['op']){
                 }else{$op1=0;}
                $rspta=$datosTIR->consultar_item($item,$idtir);
                if ($rspta==1){
-                   $rspta=$datosTIR->Actualizar_detalle($id_det, $idtir, $ubicacion, $descd, $op, $pos, $obser);
+                   $rspta=$datosTIR->Actualizar_detalle($item, $idtir, $ubica, $desc, $op1, $pos, $ob);
                    if ($rspta==true){
                        $cont=$cont+1;
                      $notir=$idtir;

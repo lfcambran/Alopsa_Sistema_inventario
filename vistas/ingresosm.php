@@ -63,6 +63,17 @@ if (!isset($_SESSION['nombre'])){
                                     <div class="form-group col-lg-3 col-md-6 col-xs-12">
                                         <label for="">Barco(*)</label>
                                         <input type="text" class="form-control" name="barco" id="barco" max="30" placeholder="Nombre Barco" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
+                                    </div>form-control" name="producto" id="producto" placeholder="Producto Contenedor" max="20" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                        <label>Orden</label>
+                                        <input type="text" class="form-control" name="orden" id="orden"  max="20" placeholder="Orden" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-2 col-md-3 col-xs-12">
+                                        <label>Bloque</label>
+                                        <select name="bloque" id="bloque" class="form-control selectpicker" data-live-search="true" required>
+                                        </select>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                         <label>Tipo Contenido(*)</label>

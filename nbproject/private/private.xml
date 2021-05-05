@@ -5,17 +5,16 @@
         <group>
             <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/datostir.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/daniostir.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresotir.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/ingresosm.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresosm.js</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/conexiones.js</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/conexiones.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresotir.js</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/datosmaestro.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/datosmaestro.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/conexiones.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/config/Conexion.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/usuario.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/desconexiones.js</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/index.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/conexiones.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/daniostir.php</file>
         </group>
     </open-files>

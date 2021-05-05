@@ -276,14 +276,15 @@ function enviadetallefallas(val){
         var opcion=$(this).find('td').eq(3).text();
         var posicion=$(this).find('td').eq(4).text();
         var obser=$(this).find('td').eq(5).text();
-        
+        var id_c=$(this).find('td').eq(0).text();
         var fila={
           val,
           ubic,
           descripd,
           opcion,
           posicion,
-          obser
+          obser,
+          id_c
         };
         filas.push(fila);
     });
@@ -389,7 +390,10 @@ function mostrar(val){
         $('#observaciones').val(datostir.observaciones);
         $('#chassis').val(datostir.chassis);
         llenartabla_detalle(datostir.idtir);
-        
+        $("#checkout").attr('disabled', !$("#checkout").attr('disabled'));
+        $('#checkout').iCheck('update');
+        $('#vaciono').attr('disabled', !$('#vaciono').attr('disabled'));
+        $('#vaciono').iCheck('update');
     }
     );
     
@@ -468,4 +472,7 @@ function desactivar_tir(idtir,usuario_anula){
     swal("se ha cancelo la accion!");
   }
 });
+}
+function cerrartir(val){
+     $('#getmodaltir').modal('show');
 }

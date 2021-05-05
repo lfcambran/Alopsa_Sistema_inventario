@@ -77,7 +77,11 @@ if (!isset($_SESSION['nombre'])){
                                 <input type="hidden" id="idingreso" name="idingreso">
                         </div>
                         <div id="datosingreso"></div>
-                        <div class="form-group col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-2 col-md-3 col-xs-12">
+                            <label>Chassis</label>
+                            <input type="text" class="form-control" id="chassis" name="chassis" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                        </div>
+                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <label>Tamaño Chasis:</label>
                             <select id="tipochasis" name="tipochasis" class="form-control select-picker" data-live-search="true"></select>
                         </div>
