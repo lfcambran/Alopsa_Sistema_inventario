@@ -190,7 +190,8 @@ if (!isset($_SESSION['nombre'])){
                                 <label>Daños/Faltantes</label>
                                  <select name="ubicacion" id="ubicacion" class="form-control select-picker" data-live-search="true">
                                      <option value="">Seleccione..</option>
-                                    <option value="inex">Interior/Exterior</option>
+                                    <option value="int">Interior</option>
+                                    <option value="ext">Exterior</option>
                                     <option value="puerta">Puertas</option>
                                     <option value="chasis">Chasis</option>
                                     <option value="llantas">Llantas</option>
@@ -335,20 +336,78 @@ if (!isset($_SESSION['nombre'])){
                             <h5 class="box-title">Daños Contenedor</h5>
                         </div>
                          <div class="box-body">
-                             <div class="form-group col-lg-2">
-                                <div align="center">
-                                <label>Izquierda</label>
-                                  <input type="checkbox" class="flat-red" id="izquierdac" name="izquierdac">
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                    <label>Izquierda</label>
+                                    <input type="checkbox" class="flat-red" id="izquierdac" name="izquierdac">
+                                    </div>
                                 </div>
-                            </div>
-                             <div class="form-group col-lg-2">
-                                 <div align="center">
-                                     <label>Derecha</label>
-                                     <input type="checkbox" class="flat-red" id="derechac" name="derechac">
-                                 </div>
-                             </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                        <label>Derecha</label>
+                                        <input type="checkbox" class="flat-red" id="derechac" name="derechac">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                        <label>Frente</label>
+                                        <input type="checkbox" class="flat-red" id="frentec" name="frentec">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                        <label>Interior</label>
+                                        <input type="checkbox" class="flat-red" id="interiorc" name="interiorc">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                        <label>Trasero</label>
+                                        <input type="checkbox" class="flat-red" id="traseroc" name="traseroc">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                        <label>Techo</label>
+                                        <input type="checkbox" class="flat-red" id="techoc" name="techoc">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <div align="center">
+                                    <label>Chasisi</label>
+                                    <input type="checkbox" class="flat-red" id="chasisc" name="chasisc">
+                                    </div>
+                                </div>
                          </div>
                      </div>
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <h4 class='box-title'>Listado Daños</h4>
+
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class='panel-body table-responsive'>
+                                        <table id="listdanioconte" class="table table-striped" style="width: 100%">
+                                            <thead>
+                                                <th>#</th>
+                                                <th>Ubicacion</th>
+                                                <th>Descripcion daño</th>
+                                                <th>Opcion</th>
+                                                <th>posicion</th>
+                                                <th>Observaciones</th>
+                                            </thead>
+                                            <tbody id="table_datac">
+
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <p></p>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-success" type="submit" id="btnGuardar3"><i class="fa fa-lock"></i>  Cerrar</button>

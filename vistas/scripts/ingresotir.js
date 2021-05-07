@@ -1,5 +1,6 @@
 var tabla;
 var tabla2;
+var table3;
 var  i =1;
 init();
 
@@ -9,6 +10,7 @@ function init(){
       listartchasis();
       tabladanios();
       tipo_contenedores();
+      table3=$('#listdanioconte').dataTable({}).DataTable();
        $("#formulariotir").on("submit",function(e){
        guardaryeditar(e); 
         });
@@ -437,6 +439,25 @@ function llenartabla_detalle(val){
     mostrarmodal();
      
 }
+function llenartabladetallec(val){
+           table3.destroy();      
+           table3=$('#listdanioconte').dataTable({
+               "ajax":{
+                   url:"../ajax/daniostir.php?op=detalletirc",
+                   data:{idtirc:val},
+                   type:"get",
+                   dataType: 'json',
+                   error:function(e){
+                       console.log(e.responseText);
+                   },
+                   
+               }
+           }).DataTable();
+         
+ 
+   
+     
+}
 function dasactivar(val){
     $('#getmodalatir').modal('show');
     $('#id_tiranular').val(val);
@@ -496,12 +517,12 @@ function desactivar_tir(idtir,usuario_anula){
 function cerrartir(val){
     listarcomboingreso2();
     $('#idtircierre').val(val);
-    
+   
      $.post("../ajax/daniostir.php?op=mostrartir",{idtir:val},
     function(data,status){
         datostirc=JSON.parse(data);
         mostraringresoc(val);
-          $('#idingresoc').val(datostirc.idingreso);
+        $('#idingresoc').val(datostirc.idingreso);
         $('#seriec').val(datostirc.SerieTir);
         $('#contenedor2').val(datostirc.idingreso);
         $('#contenedor2').selectpicker('refresh');
@@ -514,7 +535,38 @@ function cerrartir(val){
         $('#checkoutc').iCheck('update');
         $('#checkinc').attr('disabled',!$('#vaciono').attr('disabled'));
         $('#checkinc').iCheck('update');
+         if (datostirc.fallaizq==1){
+               $('#izquierdac').prop('checked', true);
+               $('#izquierdac').iCheck('update');                 
+        }
+        if (datostirc.fallader==1){
+            $('#derechac').prop('checked',true);
+            $('#derechac').iCheck('update');
+        }
+        if (datostirc.fallafre==1){
+            $('#frentec').prop('checked',true);
+            $('#frentec').iCheck('update');
+        }
+        if (datostirc.fallainte==1){
+            $('#interiorc').prop('checked',true);
+            $('#interiorc').iCheck('update');
+        }
+        if (datostirc.fallatra==1){
+            $('#traseroc').prop('checked',true);
+            $('#traseroc').iCheck('update');
+        }
+        if (datostirc.fallatec==1){
+            $('#techoc').prop('checked',true);
+            $('#techoc').iCheck('update');
+        }
+        if (datostirc.fallachas==1){
+            $('#chasisc').prop('checked',true);
+            $('#chasisc').iCheck('update');
+        }
+        
     });
     $('#titulo2').html('Cierre de TIR No. ' + val) ;
+    
+    llenartabladetallec(val);
     $('#getmodalcerrar').modal('show');
 }

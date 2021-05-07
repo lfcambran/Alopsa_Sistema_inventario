@@ -63,7 +63,6 @@ if (!isset($_SESSION['nombre'])){
                                     <div class="form-group col-lg-3 col-md-6 col-xs-12">
                                         <label for="">Barco(*)</label>
                                         <input type="text" class="form-control" name="barco" id="barco" max="30" placeholder="Nombre Barco" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
-                                    </div>form-control" name="producto" id="producto" placeholder="Producto Contenedor" max="20" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                         <label>Orden</label>

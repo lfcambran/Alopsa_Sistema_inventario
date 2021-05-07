@@ -240,6 +240,33 @@ switch ($_GET['op']){
            );
            echo json_encode($resultas);
            break;
+        case 'detalletirc':
+            $idtir=$_REQUEST['idtirc'];
+            $rspta=$datosTIR->listar_detallatir($idtir);
+           $datosdet=array();
+           $contador=0;
+           while ($reg=$rspta->fetch_object()){
+               $contador+=1;
+               if ($reg->opcionfalla==1)
+               {$opcion='SI';}else{$opcion='NO';}
+               $datos[]=array(
+                   '0'=>$contador.' - '.$reg->idfalla_tir,
+                   '1'=>$reg->ubicacion,
+                   '2'=>$reg->falla,
+                   '3'=>$opcion,
+                   '4'=>$reg->Posicion,
+                   '5'=>$reg->observacion
+                   
+               );
+           }
+           $resultas=array(
+               "sEcho"=>1,
+               "iTotalRecords"=> count($datos),
+               "iTotalDisplayRecords"=> count($datos),
+                "aaData"=>$datos
+           );
+           echo json_encode($resultas);
+        break;     
         case 'desactivar':
             $iddtir=$_REQUEST['id_dtir'];
             $usuarioanula=$_REQUEST['usuarioa'];

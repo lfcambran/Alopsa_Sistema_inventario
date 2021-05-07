@@ -2,6 +2,7 @@
 session_start();
 require_once "../modelos/Usuario.php";
 require '../modelos/bitacora.php';
+date_default_timezone_set("America/Guatemala");
 $usuario=new Usuario();
 $b=new bitacora();
 $idusuarioc=isset($_POST["idusuarioc"])? limpiarCadena($_POST["idusuarioc"]):"";
