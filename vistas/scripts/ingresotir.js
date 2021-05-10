@@ -11,12 +11,15 @@ function init(){
       tabladanios();
       tipo_contenedores();
       table3=$('#listdanioconte').dataTable({}).DataTable();
-       $("#formulariotir").on("submit",function(e){
+      $("#formulariotir").on("submit",function(e){
        guardaryeditar(e); 
-        });
-        $('#formularioanulatir').on("submit",function(e){
+      });
+      $('#formularioanulatir').on("submit",function(e){
             validarusuario(e);
-        })
+      });
+      $('#formulario_cierre').on('submit',function(e){
+         cerrar_tir(e); 
+      });
 }
 
 function listar(){
@@ -569,4 +572,26 @@ function cerrartir(val){
     
     llenartabladetallec(val);
     $('#getmodalcerrar').modal('show');
+}
+function cerrar_tir(e){
+    e.preventDefault();
+    $('#btnGuardar3').prop("disabled",false);
+    var datosform=new FormData($('#formulario_cierre')[0]);
+    $.ajax({
+        url: '../ajax/daniostir.php?op=cerrar_tir',
+        type: 'POST',
+        data: datosform,
+        contentType: false,
+        processData: false,
+         
+         success: function(resp){
+             var c=resp.substring(0,2);
+             if (c=='Se'){
+                  swal({icon:'success',title:'Cierre TIR',text:resp});
+                  tabla.ajax.reload();
+             }else if(c=='Er'){
+                  swal({icon:'Error',title:'Error al Grabar',text:resp})
+             }
+         }
+    });
 }

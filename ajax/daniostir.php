@@ -280,5 +280,18 @@ switch ($_GET['op']){
             }
             echo $rspta ? 'El TIR Seleccionado fue desactivado Satisfactoriamente':'No se pudo Desactivar el Documento TIR';
                break;
+        case 'cerrar_tir':
+                $idtirc=isset($_POST['idtircierre'])? limpiarCadena($_POST['idtircierre']):"";
+                $observacionesc=isset($_POST['observacionesc'])? limpiarCadena($_POST['observacionesc']):'';
+                $user_idc=$_SESSION['idusuario'];
+                $hoy = date("Y/m/d");
+                $hora_actual=date("H:i:s");
+                $rspta=$datosTIR->insertar_cierre($idtirc,$observacionesc,$user_idc,$hoy,$hora);
+                if ($rspta==true){
+                $bitacora=new bitacora();
+                  $bitacora->insertar_bitacora('Insertar', $hoy, $hora_actual,$_SESSION['nombre'] ,'Cierre de TIR No. '.$iddtir,'datostir');
+                }
+                 echo $rspta ? 'Se ha cerrado el TIR Satisfactoriamente.':'Error. No se pudo Desactivar el Documento TIR';
+               break;
         
 }

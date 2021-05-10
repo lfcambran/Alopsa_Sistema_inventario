@@ -148,7 +148,7 @@ function guardaryeditar(e){
                swal({icon:'success',title:'Ingreso Maestro',text:datos});
                 mostrarform(false);
                  tabla.ajax.reload();
-           }else if (d=='Er'){
+           }else if (cadena=='Er'){
                 swal({icon:'Error',title:'Error al Grabar',text:datos})
            }
    

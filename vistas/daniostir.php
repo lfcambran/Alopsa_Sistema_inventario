@@ -406,8 +406,12 @@ if (!isset($_SESSION['nombre'])){
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
-
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label>Observaciones</label>
+                        <textarea id="observacionesc" name="obarvacionesc" class="form-control"></textarea>
+                    </div>
                     <p></p>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-success" type="submit" id="btnGuardar3"><i class="fa fa-lock"></i>  Cerrar</button>
