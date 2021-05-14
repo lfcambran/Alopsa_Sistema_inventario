@@ -91,6 +91,7 @@ if (!isset($_SESSION['nombre'])){
                                 <option value="">Seleccione..</option>
                                 <option value="gens">Gens</option>
                                 <option value="reef">Reef</option>
+                                <option value="seco">Seco</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-2 col-md-12 col-sm-12 col-xs-12">

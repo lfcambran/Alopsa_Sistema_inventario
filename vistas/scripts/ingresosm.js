@@ -69,7 +69,8 @@ function limpiar(){
     $("#orden").val("");         
     $("#destino").val("");
     $("#fechaasignacion").val();
-    $("#observaciones").val();
+    $("#observaciones").val('');
+    $('#tara').val('');
     listar_bloque();
     listar_pilotos();
     $("#bloque").val(false).trigger( "change" );
@@ -113,6 +114,9 @@ $("#bloque").change(function(){
    listarposicion(idbloque);
    
 });
+$('.tara').on('input', function(){
+     this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
+})
 function listarposicion(val){
     $.post("../ajax/bloque_posicion.php?op=listar_posicion",{idbloque:val},function(r){
         $("#posicion").html(r);
@@ -169,22 +173,23 @@ function mostrar(id){
                 $("#tipoc").val(data.Tipo_Contenido);
                 $("#dcontenido").val(data.Descripcion_contenido);
                 $("#dservicio").val(data.Detalle_Servicio);
-                $("#marchamo").val(data.Marchamo);
-                $("#htir").val(data.Hora_TIR);
-                $("#serietir").val(data.Serie_TIR);
-                $("#producto").val(data.producto);
-                $("#orden").val(data.Ord);         
+               // $("#marchamo").val(data.Marchamo);
+               // $("#htir").val(data.Hora_TIR);
+               //$("#serietir").val(data.Serie_TIR);
+               // $("#producto").val(data.producto);
+               // $("#orden").val(data.Ord);         
                 $("#destino").val(data.Destino);
-                $("#fechaasignacion").val(data.Fecha_Asignacion);
+               // $("#fechaasignacion").val(data.Fecha_Asignacion);
                 $("#observaciones").val(data.Observaciones);
-                $("#bloque").val(data.Bloque);
-                $("#bloque").selectpicker('refresh'); 
-                $("#posicion").val(data.Posicion);
-                $("#posicion").selectpicker('refresh');
+               // $("#bloque").val(data.Bloque);
+               // $("#bloque").selectpicker('refresh'); 
+               // $("#posicion").val(data.Posicion);
+               // $("#posicion").selectpicker('refresh');
                 $("#piloto").val(data.Id_f);
                 $("#piloto").selectpicker('refresh');
                 $("#idpiloto").val(data.Id_f);
-                $("#noposicion").val(data.Posicion);
+                //$("#noposicion").val(data.Posicion);
+                $('#tara').val(data.tara);
                 datospiloto();
                
            });

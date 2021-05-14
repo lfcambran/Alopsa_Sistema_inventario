@@ -7,20 +7,33 @@ class datosm{
     public function __construct() {
         
     }
-    public function insertar($fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$marchmo,$htir,$serietir,$producto,$ord,$bloque,$posicion,$destino,$fechaasig,$idflota,$idusuario,$observaciones) {
-    $sql="INSERT INTO ingreso_maestro(Fecha_ingreso, Hora_ingreso, No_Contenedor, Barco, Tipo_Contenido, "
+    //public function insertar($fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$marchmo,$htir,$serietir,$producto,$ord,$bloque,$posicion,$destino,$fechaasig,$idflota,$idusuario,$observaciones,$tara) {
+   /* $sql="INSERT INTO ingreso_maestro(Fecha_ingreso, Hora_ingreso, No_Contenedor, Barco, Tipo_Contenido, "
             . "Descripcion_contenido, Detalle_Servicio, Marchamo, Hora_TIR, Serie_TIR, producto, Ord, Bloque,"
             . " Posicion, Observaciones, Destino, Fecha_Asignacion, Estado, Id_f, id_usuario) VALUES ('$fecha_ingreso','$hora_ingreso'"
             . ",'$no_Contenedor','$barco','$tipocontenido','$dcontenido','$dservicio','$marchmo','$htir','$serietir','$producto','$ord','$bloque','$posicion'"
             . ",'$observaciones','$destino','$fechaasig','Ingresado','$idflota','$idusuario')";
-    $idingreso= ejecutarConsulta_retornarID($sql);
-    $sw=true;
+             $sw=true;
         $sql_posicion="update posicion set estado='Asignado',id_ingreso='$idingreso' where idPosicion='$posicion' and idbloque='$bloque'";
         ejecutarConsulta($sql_posicion) or $sw=false;
         return $sw;
     }
-    public function actualizar($id_ingreso,$fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$marchamo,$htir,$serietir,$producto,$ord,$bloque,$posicion,$destino,$fechaasig,$idflota,$idusuario,$observaciones) {
+    *     */
+    
+    public function insertar($fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$destino,$idflota,$idusuario,$observaciones,$tara) {  
+    $sql="INSERT INTO ingreso_maestro(Fecha_ingreso,Hora_ingreso,No_Contenedor,Barco,Tipo_Contenido, "
+            ."Descripcion_contenido, Detallae_Servicio,Observaciones,Destino,Estado,Id_f,id_usuario,tara)"
+            ." values( '$fecha_ingreso','$hora_ingreso','$no_Contenedor','$barco','$tipocontenido','$dcontenido','$dservicio' "
+            .",'$observaciones','$destino','Ingresado','$idflota','$idusuario',$tara )";  
+    return ejecutarConsulta($sql);
+   
+    }
+   /* public function actualizar($id_ingreso,$fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$marchamo,$htir,$serietir,$producto,$ord,$bloque,$posicion,$destino,$fechaasig,$idflota,$idusuario,$observaciones) {
         $sql="CALL actualizar_ingreso('$id_ingreso','$fecha_ingreso','$hora_ingreso','$no_Contenedor','$barco','$tipocontenido','$dcontenido','$dservicio','$marchamo','$htir','$serietir','$producto','$ord','$bloque','$posicion','$destino','$fechaasig','$observaciones','$idflota','$idusuario')";
+        return ejecutarConsulta($sql);
+    }*/
+    public function actualizar($id_ingreso,$fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$destino,$idflota,$idusuario,$observaciones,$tara){
+        $sql="CALL actualizar_ingresom('$id_ingreso','$fecha_ingreso','$hora_ingreso','$no_Contenedor','$barco','$tipocontenido','$dcontenido','$dservicio','$destino','$observaciones','$idflota','$idusuario',$tara)";
         return ejecutarConsulta($sql);
     }
     public function listar() {

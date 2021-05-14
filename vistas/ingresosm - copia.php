@@ -26,14 +26,12 @@ if (!isset($_SESSION['nombre'])){
                                     <th>Piloto</th>
                                     <th>Placas</th>
                                     <th>Contenedor</th>
-                                   <!-- <th>Marchamo</th>
+                                    <th>Marchamo</th>
                                     <th>Bloque</th>
                                     <th>Posicion</th>
-                                    <th>Producto</th>-->
-                                    <th>Tara</th>
+                                    <th>Producto</th>
                                     <th>Barco</th>
                                     <th>Destino</th>
-                                    <th>Contenido</th>
                                     <th>Opciones</th>
                                     </thead>
                                     <tbody>
@@ -44,7 +42,6 @@ if (!isset($_SESSION['nombre'])){
                             </div>
                             <div class="panel-body" id="formulariodmaestros">
                                 <form action="" name="formularioingreso" id="formularioingreso" method="POST">
-                                 <div class="row">
                                     <div class="form-group col-lg-2 col-md-6 col-xs-12">
                                         <label for="">Fecha Ingreso</label>
                                         <input type="hidden" id="idingreso" name="idingreso">
@@ -59,15 +56,25 @@ if (!isset($_SESSION['nombre'])){
                                          </span>
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-3 col-md-6 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-6 col-xs-12">
                                         <label for="">Contenedor(*)</label>
                                         <input type="text" class="form-control" name="nocontenedor" id="nocontenedor" max="20" placeholder="No. Contenedor" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
                                     <div class="form-group col-lg-3 col-md-6 col-xs-12">
                                         <label for="">Barco(*)</label>
                                         <input type="text" class="form-control" name="barco" id="barco" max="30" placeholder="Nombre Barco" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
-                                    </div>                                
-                                   <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                        <label>Orden</label>
+                                        <input type="text" class="form-control" name="orden" id="orden"  max="20" placeholder="Orden" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-2 col-md-3 col-xs-12">
+                                        <label>Bloque</label>
+                                        <select name="bloque" id="bloque" class="form-control selectpicker" data-live-search="true" required>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                         <label>Tipo Contenido(*)</label>
                                         <input type="text" class="form-control" name="tipoc" id="tipoc" max="20" placeholder="Tipo de Contenido" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
@@ -75,11 +82,11 @@ if (!isset($_SESSION['nombre'])){
                                         <label>Descripcion Contenido(*)</label>
                                         <input type="text" class="form-control" name="dcontenido" id="dcontenido" placeholder="Descripcion del Contenido Contenedor" max="50" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
-                                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-3 col-xs-12">
                                         <label>Detalle Servicio</label>
                                         <input type="text" class="form-control" name="dservicio" id="dservicio" placeholder="Detalle del Servicio" max="20" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
-                                   <!--  <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                     <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                         <label>No. Marchamos</label>
                                         <input type="text" class="form-control" name="marchamo" id="marchamo" placeholder="Numero Marchamo" max="20" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
@@ -108,7 +115,7 @@ if (!isset($_SESSION['nombre'])){
                                         <label>Orden</label>
                                         <input type="text" class="form-control" name="orden" id="orden"  max="20" placeholder="Orden" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
-                                   
+                                    
                                     <div class="form-group col-lg-2 col-md-3 col-xs-12">
                                         <label>Bloque</label>
                                         <select name="bloque" id="bloque" class="form-control selectpicker" data-live-search="true" required>
@@ -121,41 +128,29 @@ if (!isset($_SESSION['nombre'])){
                                         </select>
                                         <input type="hidden" id="noposicion" name="noposicion">
                                     </div>
-                                      <div class="form-group col-lg-2 col-md-3 col-md-12">
+                                 
+                                     <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                        <label>Destino</label>
+                                        <input type="text" id="destino" name="destino" placeholder="Destino Contenedor" class="form-control" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3 col-md-12">
                                         <label>Fecha Asignacion</label>
                                         <input type="date" class="form-control" name="fechaasignacion" id="fechaasignacion" value="<?php echo date("Y-m-d"); ?>">
                                     </div>
-                                    -->
-                                 </div>
-                                    <div class="row">
-                                    
-                                    <div class="form-group col-lg-2 col-md-3 col-xs-12">
-                                        <label>Tara:</label>
-                                        <input type="text" id="tara" name="tara" placeholder="TARA" class="form-control tara">
-                                    </div>
-                                    <div class="form-group col-lg-1 col-md-3 col-xs-12"></div>
-                                     <div class="form-group col-lg-4 col-md-3 col-xs-12">
-                                        <label>Destino:</label>
-                                        <input type="text" id="destino" name="destino" placeholder="Destino Contenedor" class="form-control" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
-                                    </div>
-                                        
+                                      
                                        <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                            <label>Piloto:</label>
                                                 <select name="piloto" id="piloto" class="form-control selectpicker" data-live-search="true" required>
-                                            </select>
+                                                </select>
                                            <input type="hidden" id="idpiloto" name="idpiloto">
                                         </div>
-                                     </div>
-                                     <div class="row">
-                                        <div id="datos_piloto"></div>
-                                    </div>
-                                     <div class="row">
-                                                                   
-                                     <div class="form-group col-lg-4 col-md-3 col-xs-12">
+                                <div id="datos_piloto"></div>
+                                      <div class="form-inline col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                                     <div class="form-group col-lg-6 col-md-3 col-xs-12">
                                         <label>Observaciones</label>
                                         <textarea class="form-control" id="observaciones" name="observaciones"></textarea>
                                     </div>
-                                   </div>
+                                    
                                     
                                      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>

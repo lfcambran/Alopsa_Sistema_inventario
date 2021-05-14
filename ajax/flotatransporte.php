@@ -44,7 +44,7 @@ switch ($_GET["op"]){
         while ($row = mysqli_fetch_array($rspta)){
         echo '<div class="form-group col-lg-2 col-md-3 col-xs-12">'
             . '<label>Cabezal:</label><input type="text" class="form-control " value="'.$row['Cabezal'].'" disabled="true">'
-            . '</div><div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Placas:</label><input type="text" class="form-control" value="'.$row['Placas'].'" disabled="true"></div>'
+            . '</div><div class="form-group col-lg-2 col-md-3 col-xs-12"><label>Placas:</label><input type="text" class="form-control" value="'.$row['Placas'].'" disabled="true"></div>'
             . '<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Licencia:</label><input type="text" class="form-control" value="'.$row['Licencias'].'" disabled="true"></div>'
             . '<div class="form-group col-lg-3 col-md-3 col-xs-12"><label>Codigo Naviera:</label><input type="text" class="form-control" value="'.$row['Codigo_Piloto_Naviera'].'" disabled="true"></div>';
         }
