@@ -347,7 +347,7 @@ function enviadetallefallas(val){
         };
         filas.push(fila);
     });
-    if (typeof idtir === 'undefined'){
+    if (typeof idtir === 'undefined' || idtir=="" ){
     $.ajax({
        url:'../ajax/daniostir.php?op=enviardetalle',
        type:"POST",
@@ -558,7 +558,7 @@ function cerrartir(val){
      $.post("../ajax/daniostir.php?op=mostrartir",{idtir:val},
     function(data,status){
         datostirc=JSON.parse(data);
-        mostraringresoc(val);
+        mostraringresoc(datostirc.idingreso);
         $('#idingresoc').val(datostirc.idingreso);
         $('#seriec').val(datostirc.SerieTir);
         $('#contenedor2').val(datostirc.idingreso);

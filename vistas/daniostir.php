@@ -415,7 +415,7 @@ if (!isset($_SESSION['nombre'])){
                     </div>
                     <p></p>
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn btn-success" type="submit" id="btnGuardar3"><i class="fa fa-lock"></i>  Cerrar</button>
+                        <button class="btn btn-success" type="submit" id="btnGuardar3"><i class="fa fa-lock"></i>  Cierre de TIR </button>
                         <button class="btn btn-danger pull-right" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                     </div>
                 </form>

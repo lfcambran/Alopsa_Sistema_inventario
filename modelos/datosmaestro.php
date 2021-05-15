@@ -22,7 +22,7 @@ class datosm{
     
     public function insertar($fecha_ingreso,$hora_ingreso,$no_Contenedor,$barco,$tipocontenido,$dcontenido,$dservicio,$destino,$idflota,$idusuario,$observaciones,$tara) {  
     $sql="INSERT INTO ingreso_maestro(Fecha_ingreso,Hora_ingreso,No_Contenedor,Barco,Tipo_Contenido, "
-            ."Descripcion_contenido, Detallae_Servicio,Observaciones,Destino,Estado,Id_f,id_usuario,tara)"
+            ."Descripcion_contenido, Detalle_Servicio,Observaciones,Destino,Estado,Id_f,id_usuario,tara)"
             ." values( '$fecha_ingreso','$hora_ingreso','$no_Contenedor','$barco','$tipocontenido','$dcontenido','$dservicio' "
             .",'$observaciones','$destino','Ingresado','$idflota','$idusuario',$tara )";  
     return ejecutarConsulta($sql);
