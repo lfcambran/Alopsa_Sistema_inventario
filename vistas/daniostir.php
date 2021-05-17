@@ -98,6 +98,14 @@ if (!isset($_SESSION['nombre'])){
                             <label>Tipo Contenedor:</label>
                             <select id='tipocontenedor' name="tipocontenedor" class="form-control select-picker" data-live-search="true"></select>
                         </div>
+                        <div class="form-group col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                            <label>No Booking</label>
+                            <input type="text" class="form-control booking" name="booking" id="booking" >
+                        </div>
+                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <label>Sello Botella</label>
+                            <input type="text" name="sbotella" id="sbotella" class="form-control">
+                        </div>
                     </div>
                     <div class="row">
                           <div class="form-group col-lg-3 col-md-3 col-xs-12">
@@ -330,6 +338,14 @@ if (!isset($_SESSION['nombre'])){
                         <div class="form-group col-lg-2 col-md-12 col-xs-12">
                             <label>Hora</label>
                             <input type="time" id="horac" name="horac" class="form-control" disabled="">
+                        </div>
+                        <div class="form-group col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                            <label>No Booking</label>
+                            <input type="text" class="form-control booking" name="bookingc" id="bookingc" disabled="" >
+                        </div>
+                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <label>Sello Botella</label>
+                            <input type="text" name="sbotellac" id="sbotellac" class="form-control" disabled="">
                         </div>
                     </div>
                      <div class="box box-info">

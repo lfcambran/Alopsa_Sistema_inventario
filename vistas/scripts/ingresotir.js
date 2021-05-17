@@ -93,6 +93,9 @@ $("#contenedor").change(function(){
 $("#contenedor2").change(function(){
     mostraringresoc($("#idtircierre").val());
 })
+$("#booking").on('input', function(){
+    this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g,'.');
+})
 $("#ubicacion").change(function(){
     $('#select_esp').html("");
     var opcionu=$("#ubicacion").val();
@@ -312,6 +315,8 @@ function limpiar(){
     $('#chasis').prop('checked',false);
     $('#chasis').iCheck('update');
     $('#idintir').val("");
+    $('#booking').val("");
+    $('#sbotella').val("");
     listarcomboingreso();
     eliminar_tabla();
     
@@ -408,6 +413,8 @@ function mostrar(val){
         $('#tipocontenedor').selectpicker('refresh');
         $('#fecha').val(datostir.fecha);
         $('#hora').val(datostir.hora);
+        $('#booking').val(datostir.booking);
+        $('#sbotella').val(datostir.sello_botella);
         if (datostir.fallaizq==1){
                $('#izquierda').prop('checked', true);
                $('#izquierda').iCheck('update');                 
@@ -572,6 +579,8 @@ function cerrartir(val){
         $('#checkoutc').iCheck('update');
         $('#checkinc').attr('disabled',!$('#vaciono').attr('disabled'));
         $('#checkinc').iCheck('update');
+        $('#bookingc').val(datostirc.booking);
+        $('#sbotellac').val(datostirc.sello_botella);
          if (datostirc.fallaizq==1){
                $('#izquierdac').prop('checked', true);
                $('#izquierdac').iCheck('update');                 

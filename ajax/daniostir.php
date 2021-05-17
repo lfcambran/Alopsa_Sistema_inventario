@@ -32,6 +32,8 @@ $obser= isset($_POST['observaciones'])? limpiarCadena($_POST['observaciones']):'
 $cli= isset($_POST['cliente'])? limpiarCadena($_POST['cliente']):'';
 $dest= isset($_POST['destino'])? limpiarCadena($_POST['destino']):'';
 $nav= isset($_POST['naviera'])? limpiarCadena($_POST['naviera']):'';
+$booki=isset($_POST['booking'])? limpiarCadena($_POST['booking']):'';
+$sbot= isset($_POST['sbotella'])? limpiarCadena($_POST['sbotella']):'';
 $idf = isset($_POST['idf'])? limpiarCadena($_POST['idf']):'';
 $user_id=$_SESSION['idusuario'];
 switch ($_GET['op']){
@@ -50,10 +52,10 @@ switch ($_GET['op']){
            if ($tec=='on'){$tech=1;}else{$tech=0;}
            if ($cha=='on'){$chas=1;}else{$chas=0;}
            if (empty($idtir)){
-               $rspta=$datosTIR->Insertar($serietir,$chasis,$tchassis,$refr,$tcon,$fecha,$hora,$tipomov,$nav,$convasio,$dest,$izqu,$dere,$fren,$inte,$tras,$tech,$chas,$obser,$cli,$contenedor,$idf,$user_id);
+               $rspta=$datosTIR->Insertar($serietir,$chasis,$tchassis,$refr,$tcon,$fecha,$hora,$tipomov,$nav,$convasio,$dest,$izqu,$dere,$fren,$inte,$tras,$tech,$chas,$obser,$cli,$contenedor,$idf,$user_id,$booki,$sbot);
                echo json_encode($rspta);
            }else{
-               $rspta=$datosTIR->actualizar($idtir,$serietir,$chasis,$tchassis,$refr,$tcon,$fecha,$hora,$tipomov,$nav,$convasio,$dest,$izqu,$dere,$fren,$inte,$tras,$tech,$chas,$obser,$cli,$contenedor,$idf);
+               $rspta=$datosTIR->actualizar($idtir,$serietir,$chasis,$tchassis,$refr,$tcon,$fecha,$hora,$tipomov,$nav,$convasio,$dest,$izqu,$dere,$fren,$inte,$tras,$tech,$chas,$obser,$cli,$contenedor,$idf,$booki,$sbot);
                echo json_encode($rspta);
                //echo $rspta ? 'Se Actualizo correctamente el TIR':'Error al actualizar el TIR';
            }

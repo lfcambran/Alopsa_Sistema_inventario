@@ -24,8 +24,13 @@ if (!isset($_SESSION['nombre'])){
                         <div class="panel-body table-responsive" id="posicionespredioc">
                             <table id="tbllistaposicionc" class="table table-striped table-bordered table-condensed table-hover">
                                 <thead>
-                                <th>contenedor</th>
-                                 <th>Opciones</th>
+                                <th>Contenedor</th>
+                                <th>Patio</th>
+                                <th>Area</th>
+                                <th>Bloque</th>
+                                <th>Fila</th>
+                                <th>Altura</th>
+                                <th>Opciones</th>
                                 </thead>
                             </table>
                         </div>

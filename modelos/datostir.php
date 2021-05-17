@@ -27,16 +27,16 @@ class datostir{
         return ejecutarConsulta($sql);
     }
     public function Actualizar_detalle($id_det,$idtir,$ubicacion,$descd,$op,$pos,$obser){
-        $sql="CALL actualizar_fallastir($id_det,$idtir,'$ubicacion','$descd',$pos,'$obser','$pos')";
+        $sql="CALL actualizar_fallastir($id_det,$idtir,'$ubicacion','$descd',$op,'$obser','$pos')";
         return ejecutarConsulta($sql);
     }
-    public function Insertar($serietir,$nochasis,$tchasis,$refre,$tcnte,$fecha,$hora,$tmov,$naviera,$vacio,$detino,$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,$cliente,$observ,$idingreso,$idf,$idusuario){
-        $sql="CALL insert_tir('$serietir','$nochasis','$tchasis','$refre','$tcnte','$fecha','$hora','$tmov','$naviera','$vacio','$detino',$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,'$observ','$cliente','$idingreso',$idf,$idusuario)";
+    public function Insertar($serietir,$nochasis,$tchasis,$refre,$tcnte,$fecha,$hora,$tmov,$naviera,$vacio,$detino,$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,$cliente,$observ,$idingreso,$idf,$idusuario,$booking,$sbotella){
+        $sql="CALL insert_tir('$serietir','$nochasis','$tchasis','$refre','$tcnte','$fecha','$hora','$tmov','$naviera','$vacio','$detino',$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,'$observ','$cliente','$idingreso',$idf,$idusuario,$booking,'$sbotella')";
         return ejecutarConsultaSimpleFila($sql);
     }
     
-    public function actualizar($idtir,$serietir,$nochasis,$tchasis,$refre,$tcnte,$fecha,$hora,$tmov,$naviera,$vacio,$detino,$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,$cliente,$observ,$idingreso,$idf) {
-        $sql="CALL actualizar_tir($idtir,'$serietir','$nochasis','$tchasis','$refre','$tcnte','$fecha','$hora','$tmov','$naviera','$vacio','$detino',$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,'$observ','$cliente','$idingreso',$idf)";
+    public function actualizar($idtir,$serietir,$nochasis,$tchasis,$refre,$tcnte,$fecha,$hora,$tmov,$naviera,$vacio,$detino,$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,$cliente,$observ,$idingreso,$idf,$booking,$sbotella) {
+        $sql="CALL actualizar_tir($idtir,'$serietir','$nochasis','$tchasis','$refre','$tcnte','$fecha','$hora','$tmov','$naviera','$vacio','$detino',$fiz,$fder,$ffr,$fint,$ftra,$fte,$fcha,'$observ','$cliente','$idingreso',$idf,$booking,'$sbotella')";
         return ejecutarConsultaSimpleFila($sql);
     }
     public function listar_tchasis(){
