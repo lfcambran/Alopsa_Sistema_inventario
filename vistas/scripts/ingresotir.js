@@ -256,20 +256,20 @@ function guardaryeditar(e){
            var datos=JSON.parse(data);
            var cadena=datos.idtir;
            if (cadena>=0){
-               enviadetallefallas(cadena)
+               enviadetallefallas(cadena);
            }else if (datos=='Er'){
-                swal({icon:'Error',title:'Error al Grabar',text:datos})
+                swal({icon:'Error',title:'Error al Grabar',text:datos});
            }
    
           
           }
-        })
+        });
     }
     }else {
        swal({
            title:'Error al grabar',
            icon: 'warning',
-           text: 'Se ha encontrado los siguientes errores: '+ mensajeerror
+           text: 'Se ha encontrado los siguientes errores: \n'+ mensajeerror
        })
     };
 }

@@ -52,9 +52,46 @@ if (!isset($_SESSION['nombre'])){
                     <div class="box box-info">
                         <div class="box-body">
                             <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <label>Fecha</label>
+                                <input type="date" id="fechai" name="fechai" class="form-control" value="<?php echo date("Y-m-d"); ?>">
+                            </div>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <label>Hora:</label>
+                                <div class="input-group clockpicker" data-autoclose="true">
+                                    <input type="text" class="form-control" name="hora" id="hora" value="<?php $hora = new DateTime("now"); echo $hora->format('H:i:s'); ?>">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <label>Contenedor:</label>
                                 <select name="contenedor" id='contenedor' class="form-control select-picker" data-live-search='true'>
                                 </select>
+                            </div>
+                            <div id="datosingreso"></div>
+                            <div class="form-group col-lg-3 col-md-12 col-xs-12">
+                                <label>Patio Predio:</label>
+                                <select name="patio" id="patio" class="form-control select-picker" data-live-search='true'></select>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-12 col-xs-12">
+                                <label>Area en Patio</label>
+                                <select name="areap" id="areap" class="form-control select-picker" data-live-search="true" required>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-12 col-xs-12">
+                                <label>Bloque en Area</label>
+                                <select name="bloque" id="bloque" class="form-control select-picker" data-live-search="true" required></select>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-12 col-xs-12">
+                                <label>Fila en Bloque</label>
+                                <select name="fila" id="fila" class="form-control select-picker" data-live-search="true" required=""></select>
+                            </div>
+                            <div id="numerofila_c"></div>
+                            <div class="form-group col-lg-4 col-md-12 col-xs-12">
+                                <label>Observaciones</label>
+                                <textarea id="observaciones" name="observaciones" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -76,6 +113,11 @@ if (!isset($_SESSION['nombre'])){
     }
      require 'footer.php';
      ?>
+<script type="text/javascript">
+$('.clockpicker').clockpicker({
+    donetext: 'Aceptar'
+});
+</script>
 <script src="scripts/posicionprecont.js"></script>
 <?php
 }
