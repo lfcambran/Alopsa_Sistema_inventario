@@ -105,6 +105,7 @@ function limpiar(){
     $('#fila_p').val('');
     $('idingreso').val('');
     $('#contenedor').removeAttr('disabled');
+    $('#no_altura').val('');
     mostraringreso(0);
 }
 function guardar_editar(e){
@@ -226,7 +227,7 @@ function mostrar(id){
             $('#fila').val(datos.idfila);
             $('#fila').val(datos.idfila).change();
             $('#fila').selectpicker('refresh');
-         
+            
             $('#observaciones').val(datos.observaciones);
             $('#contenedor').prop("disabled", true);
             $('#contenedor').selectpicker('refresh');
@@ -282,8 +283,10 @@ function desactivar_pos(idanular,id_al){
                     $.post("../ajax/posicionprecon.php?op=desactivar",{idposcon:idanular,idaltura:id_al},function(e){
                        var c=e.substring(0,2);
                        if (c=="Se"){
+                           limpiar();
                            swal({icon:'success',title:'Anulacion de Posicion Contenedor',title:e});
                        }else if (c=="No"){
+                           limpiar();
                             swal({icon:'warning',title:'Anulacion de Posicion Contenedor',title:e});
                        }else{
                            swal("Error: "+ e );

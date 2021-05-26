@@ -77,7 +77,7 @@ switch ($_GET["op"]){
             $opcion="";
                     if ($reg->Estado=='Ingresado'){
                        $opcion ='<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Ingreso.','.$reg->idb.','.$reg->idp.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular Ingreso"></i></button> ';
-                    }else {
+                    }else if ($reg->Estado=='Anulado') {
                         $opcion = '<button class="btn btn-success btn-xs" onclick="activar('.$reg->Id_Ingreso.','.$reg->idb.','.$reg->idp.')"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="Activar Ingreso"></i></button>';
                     }
             $datos[]=array(

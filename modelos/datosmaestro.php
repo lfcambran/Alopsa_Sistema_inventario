@@ -37,7 +37,7 @@ class datosm{
         return ejecutarConsulta($sql);
     }
     public function listar() {
-        $sql="call listardatosm()";
+        $sql="call mostrar_datosm()";
            return ejecutarConsulta($sql);
     }
     public function mostraringreso($id){

@@ -70,8 +70,14 @@ class posicion_cont_predio{
         $sql="Update contenedor_posicion_patio set estado='Anulado' where id_conte_posi=$id";
         $sw= ejecutarConsulta($sql);
         if ($sw==true){
+            $ac==true;
             $sql2="update altura_predio set estado='Sin Asignar', id_ingresoc=0 where id_altura=$ida";
-            return ejecutarConsulta($sql) or false;
+            
+             $ac=ejecutarConsulta($sql2) or false;
+             if ($ac==true){
+                 $sql3="update ingreso_maestro SET Estado='Ingresado' where Id_Ingreso=$idingreso";
+                 return ejecutarConsulta($sql3) or false; 
+             }
         }
     }
 }
