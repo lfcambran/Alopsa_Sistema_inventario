@@ -17,7 +17,7 @@ global $conexion;
 $query=$conexion->query($sql);
 if ($query==false){
     $fila='errores.txt';
-    $errorconsulta=date('l jS \of F Y h:i:s A'). "-" . mysqli_errno($conexion). " : " . mysqli_error($conexion) ."\n";
+    $errorconsulta=date('l jS \of F Y h:i:s A'). " - " . mysqli_errno($conexion). " : " . mysqli_error($conexion) . ' - ' . $sql ."\n";
     file_put_contents($fila, $errorconsulta, FILE_APPEND | LOCK_EX);
 }
 return $query;
