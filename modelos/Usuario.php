@@ -112,9 +112,21 @@ public function insertar_ingresos($idusuario,$nombre,$fecha,$hora){
     $sql="insert into usuarios_activos (usuarios,nombre_usuario,fecha,hora) values ('$idusuario','$nombre','$fecha','$hora')";
     ejecutarConsulta($sql);
 }
+public function actualizar_ingreso($id,$idusuario,$fecha,$hora){
+    $sql="update usuarios_activos set fecha='$fecha',hora='$hora' where id=$id and usuarios=$idusuario";
+    ejecutarConsulta($sql);
+}
+public function consultar_usuario_activo($idusuario){
+    $sql="select * from usuarios_activos where usuarios='$idusuario'";
+    return ejecutarConsulta($sql);
+}
 public function eliminar_session($idusuario){
     $sql="delete from usuarios_activos where usuarios='$idusuario'";
     ejecutarConsulta($sql);
+}
+public function conteo_usuario_activo($idusuario){
+    $sql="select * from usuarios_activos where usuarios='$idusuario'";
+    return numeroitem($sql);
 }
 }
 

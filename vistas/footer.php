@@ -26,7 +26,8 @@
     <script src="../public/iCheck/icheck.js"></script>
     <script src="../public/js/bootbox.min.js"></script> 
     <script src="../public/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript" src="../public/clockpicker/bootstrap-clockpicker.min.js"></script>
-    
+
 </body>
 </html>

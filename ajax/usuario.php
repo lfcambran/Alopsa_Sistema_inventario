@@ -188,8 +188,20 @@ switch ($_GET["op"]) {
                         
                 $sessiones->tiempoactivo();
                 $b->insertar_bitacora('Ingreso', date("Y-m-d"), date("H:i:s"), $_SESSION['nombre'], 'Inicio de Sesion-Ingreso al sistema', '');
-                $usuario->insertar_ingresos($_SESSION['idusuario'],$_SESSION['nombre'],date("Y-m-d"),date("H:i:s"));    
-                        
+                
+                        $noingreso=$usuario->conteo_usuario_activo($_SESSION['idusuario']);
+                        if ($noingreso>=1){
+                            $idusuario_ac;
+                            $usuario_act=$usuario->consultar_usuario_activo($_SESSION['idusuario']);
+                            while ($row= mysqli_fetch_array($usuario_act)){
+                                $idusuario_ac=$row['id'];
+                            }
+                            $usuario->actualizar_ingreso($idusuario_ac, $_SESSION['idusuario'], date("Y-m-d"),date("H:i:s"));
+                            $_SESSION['seccionactiva']='activo';
+                        }else{
+                        $usuario->insertar_ingresos($_SESSION['idusuario'],$_SESSION['nombre'],date("Y-m-d"),date("H:i:s"));  
+                            $_SESSION['seccionactiva']='';
+                        }  
                         
 		}
                 

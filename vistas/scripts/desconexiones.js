@@ -82,7 +82,7 @@ function padDigitos(numero, digitos) {
     return Array(Math.max(digitos - String(numero).length + 1, 0)).join(0) + numero;
 }
 function limpiar(){
-     var now = new Date();
+    var now = new Date();
     var dia = ("0" + now.getDate()).slice(-2);
     var mes = ("0" + (now.getMonth() + 1)).slice(-2);
     var today = now.getFullYear()+"-"+(mes)+"-"+dia;
@@ -169,7 +169,7 @@ function validarusuario(e){
         function(data){
             if (data!="null"){
                 var idanular=$("#id_desco").val();
-                desactivardesco(idanular,);
+                desactivardesco(idanular);
             }else{
                 swal({title:'Anulacion Cancelada',title:"No cuenta con el acceso para anular el ingreso"})
             }

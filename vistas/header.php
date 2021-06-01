@@ -6,6 +6,12 @@ require '../ajax/sessionphp.php';
 date_default_timezone_set("America/Guatemala");
 $sessiones=new sessiones();
 $sessiones->tiempoactivo();
+if ($_SESSION['seccionactiva']=='activo'){
+    echo'<script type="text/javascript">
+    alert("La ultima Sesion no fue cerrada correctamente. Sesion Actualizada");
+    </script>';
+    $_SESSION['seccionactiva']='';
+}
   ?>
  <!DOCTYPE html>
 <html>
@@ -37,6 +43,7 @@ $sessiones->tiempoactivo();
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
 <link rel="stylesheet" type="text/css" href="../public/clockpicker/jquery-clockpicker.css">
     <link rel="stylesheet" type="text/css" href="../public/clockpicker/bootstrap-clockpicker.min.css">
+   
   </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -162,7 +169,7 @@ if ($_SESSION['ingresomov']==1){
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="ingresosm.php"><i class="fa fa-recycle"></i>Movimiento Interno</a></li>
+            <li><a href="movinterno.php"><i class="fa fa-recycle"></i>Movimiento Interno</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -229,10 +236,11 @@ if ($_SESSION['acceso']==1) {
                 </liv>';
             }
         ?>
-        <li><a href="#"><i class="fa fa-question-circle"></i> <span>Ayuda</span><small class="label pull-right bg-yellow"></small></a></li>
-        <li><a href="" target="_blanck"><i class="fa  fa-exclamation-circle"></i> <span>Acerca de</span><small class="label pull-right bg-yellow"></small></a></li>   
+        <li><a href="paginaencontru.php"><i class="fa fa-question-circle"></i> <span>Ayuda</span><small class="label pull-right bg-yellow"></small></a></li>
+        <li><a href="../ajax/usuario.php?op=salir"><i class="fa fa-close"></i> <span>Salir</span><small class="label pull-right bg-yellow"></small></a></li>
+        <li><a href="paginaencontru.php"><i class="fa  fa-exclamation-circle"></i> <span>Acerca de</span><small class="label pull-right bg-yellow"></small></a></li>   
         
       </ul>
-    </section>
+    </section
     <!-- /.sidebar -->
   </aside>

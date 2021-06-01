@@ -16,21 +16,31 @@ if (!isset($_SESSION['nombre'])){
         <li class="active">Dashboard</li>
         </ol>
     </section>
+    
     <section class="content">
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>5</h3>
-                    <p>Ingresos Nuevos</p>
-                </div>
-                <div class="icon">
-                   <i class="ion ion-android-subway"></i>
-                </div>
-                    <a href="#" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
+        
+
+            <div class="box box-info">
+              <div class="box-body">
+                <div class="row">
+
+                  <div class="col-lg-3 col-xs-6">
+                      <div class="small-box bg-aqua">
+                      <div class="inner">
+                          <h3>5</h3>
+                          <p>Ingresos Nuevos</p>
+                      </div>
+                      <div class="icon">
+                         <i class="ion ion-android-subway"></i>
+                      </div>
+                          <a href="ingresosm.php" class="small-box-footer">Mas info <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
+                  </div>
+              </div>
+              </div>
+             </div>
+        
+       
     </section>
 </div>
         <?php
