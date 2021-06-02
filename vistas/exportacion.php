@@ -16,7 +16,7 @@ if (!isset($_SESSION['nombre'])){
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h class="box-title"> Exportacion <button class="btn btn-success" id="btnagregar" onclick="mostrarmodal()"><i class="fa fa-plus-circle"></i>  Agregar</button> </h>
+                        <h4 class="box-title"> Exportacion <button class="btn btn-success" id="btnagregar" onclick="mostrarmodal()"><i class="fa fa-plus-circle"></i>  Agregar</button> </h4>
                         <div class="box-tools pull-right">
                                     <a href="../vistas/dashboard.php"><button class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> Volver</button></a>
                                 </div>
