@@ -66,12 +66,14 @@ if (!isset($_SESSION['nombre'])){
                                     <div class="form-group col-lg-3 col-md-6 col-xs-12">
                                         <label for="">Barco(*)</label>
                                         <input type="text" class="form-control" name="barco" id="barco" max="30" placeholder="Nombre Barco" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
-                                    </div>                                
-                                   <div class="form-group col-lg-3 col-md-3 col-xs-12">
+                                    </div>   
+                                 </div>
+                                    <div class="row">
+                                   <div class="form-group col-lg-2 col-md-3 col-xs-12">
                                         <label>Tipo Contenido(*)</label>
                                         <input type="text" class="form-control" name="tipoc" id="tipoc" max="20" placeholder="Tipo de Contenido" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
-                                    <div class="form-group col-lg-4 col-md-3 col-xs-12">
+                                    <div class="form-group col-lg-3 col-md-3 col-xs-12">
                                         <label>Descripcion Contenido(*)</label>
                                         <input type="text" class="form-control" name="dcontenido" id="dcontenido" placeholder="Descripcion del Contenido Contenedor" max="50" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required>
                                     </div>
@@ -126,15 +128,14 @@ if (!isset($_SESSION['nombre'])){
                                         <input type="date" class="form-control" name="fechaasignacion" id="fechaasignacion" value="<?php echo date("Y-m-d"); ?>">
                                     </div>
                                     -->
-                                 </div>
-                                    <div class="row">
-                                    
                                     <div class="form-group col-lg-2 col-md-3 col-xs-12">
                                         <label>Tara:</label>
                                         <input type="text" id="tara" name="tara" placeholder="TARA" class="form-control tara">
                                     </div>
-                                    <div class="form-group col-lg-1 col-md-3 col-xs-12"></div>
-                                     <div class="form-group col-lg-4 col-md-3 col-xs-12">
+
+                                 </div>
+                                    <div class="row">
+                                    <div class="form-group col-lg-4 col-md-3 col-xs-12">
                                         <label>Destino:</label>
                                         <input type="text" id="destino" name="destino" placeholder="Destino Contenedor" class="form-control" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()">
                                     </div>

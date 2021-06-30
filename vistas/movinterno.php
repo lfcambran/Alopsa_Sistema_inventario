@@ -81,74 +81,81 @@ if (!isset($_SESSION['nombre'])){
                                                     <div class="box-body">
                                                         <div class="row">
                                                             <input type="hidden" id="idmovinterno" name="idmovinterno"><!-- comment -->
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            <div class="form-group col-lg-2 col-md-4 col-xs-4">
                                                                 <label>Semana</label>
                                                                 <input type="text" class="form-control" id="semana" name="semana" autocomplete="off" placeholder="Semana" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required=""><!-- comment -->
                                                             </div>
                                                         
                                                         
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            <div class="form-group col-lg-2 col-md-4 col-xs-4">
                                                                 <label>Año</label>
                                                                 <input type="text" class="form-control" id="anio" name="anio" autocomplete="off" placeholder="Año" value="<?php  echo date("Y"); ?>" required="">
                                                             </div>
                                                             
                                                         
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            <div class="form-group col-lg-3 col-md-4 col-xs-4">
                                                                 <label>Fecha de Mov. Interno</label>
                                                                 <input type="date" class="form-control" id="fechamov" name="fechamov" autocomplete="off" placeholder="Fecha de Mov. Interno" value="<?php  echo date("Y-m-d"); ?>" required="">
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            
+                                                            <div class="form-group col-lg-3 col-md-12 col-xs-12">                                                            
                                                             <label>Hora Ingreso</label>
                                                             <div class="input-group clockpicker">
-                                                                <input type="text" class="form-control" id="Hingreso" name="Hingreso" autocomplete="off" placeholder="Hora Ingreso" value="<?php $hora2 =new DateTime("now"); echo $hora2->format('H:i:s');  ?>" required="">
+                                                                <input type="text" class="form-control" id="hingreso" name="hingreso" autocomplete="off" placeholder="Hora Ingreso" value="<?php $hora2 =new DateTime("now"); echo $hora2->format('H:i:s');  ?>" required="">
                                                                 <span class="input-group-addon">
                                                                     <span class="glyphicon glyphicon-time"></span>
                                                                 </span>
                                                             </div>
-                                                            </div>
+                                                            </div>   
+
+                                                           
+                                                        </div>
+                                                        <div class="row">
                                                         
-                                                        
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            <div class="form-group col-lg-3 col-md-4 col-xs-4">
                                                                 <label>Contenedor</label>
                                                                 <select class="form-control select-picker" id="contenedor" name="contenedor" data-live-search="true">
                                                                     </select>
-                                                                <input type="hidden" id="idingreso" name="idingreso">
+                                                                
                                                             </div>
-                                                        
-                                                        
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                            <div class="form-group col-lg-2 col-md-12 col-xs-12">
+                                                                <label>Bloque Anterior:</label>
+                                                                <input type="text" id="bloqueanterior" name="bloqueanterior" class="form-control">
+                                                                <input type="hidden" id="bloqueanteriorh" name="bloqueanteriorh">
+                                                            </div>
+                                                            <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Medida</label>
-                                                                <input type="text" class="form-control" id="medida" name="medida" autocomplete="off" placeholder="Medida" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
+                                                                <select class="form-control select-picker" id="medida" name="medida" required=""></select>
                                                             </div>
-                                                        </div>
+                                                            <div class="form-group col-lg-3 col-md-12 col-xs-12">
+                                                                <label>Patio:</label>
+                                                                <select name="patio" id="patio" class="form-control select-picker" data-live-search="true" ></select>
+                                                            </div>
+                                                          </div>
                                                         <div class="row">
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
-                                                                <label>Bloque</label>
-                                                                <input type="text" class="form-control" id="bloque" name="bloque" autocomplete="off" placeholder="Bloque" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
+                                                            
+                                                           <div class="form-group col-lg-3 col-md-12 col-xs-12">
+                                                                <label>Area:</label>
+                                                                <select class="form-control select-picker" id="areap" name="areap" required=""></select>
                                                             </div>
-                                                        
-                                                        
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                                             <div class="form-group col-lg-3 col-md-12 col-xs-12">
+                                                                <label>Bloque</label>
+                                                                <select class="form-control select-picker" id="bloque" name="bloque"  required=""></select>
+                                                            </div>
+                                                            <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Cliente</label>
                                                                 <input type="text" class="form-control" id="cliente" name="cliente" autocomplete="off" placeholder="Cliente" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
                                                             </div>
-                                                            
+                                                            <div id="opcion"></div>
                                                         
-                                                        
+                                                       
+                                                        </div>
+                               
+                                                        <div class="row">
                                                             <div class="form-group col-lg-4 col-md-4 col-xs-4">
                                                                 <label>Actividad</label>
-                                                                <input type="text" class="form-control" id="actividad" name="actividad" autocomplete="off" placeholder="Actividad" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
+                                                                <input type="text" class="form-control" id="actividad" name="actividad" autocomplete="off" placeholder="Actividad" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="" value="MOV. INTERNO">
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-lg-4 col-md-4 col-xs-4">
-                                                                <label>Patio</label>
-                                                                <input type="text" class="form-control" id="patio" name="patio" autocomplete="off" placeholder="Patio" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
                                                             <div class="form-group col-lg-6 col-md-6 col-xs-6">
                                                             <label>Motivo</label>
                                                             <textarea type="text" class="form-control" id="motivo" name="motivo" autocomplete="off" placeholder="Motivo" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required=""></textarea>
