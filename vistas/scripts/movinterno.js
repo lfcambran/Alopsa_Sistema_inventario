@@ -1,5 +1,5 @@
 var tabla;
-var tabla;
+var tabla2;
 init();
 
 function init(){
@@ -10,6 +10,7 @@ function init(){
     llenarcombopatio();
     llenarcombomedida();
     $('#semana').val(semanadelmes($('#fechamov').val()));
+    $('#semanac').val(semanadelmes($('#fechamovc').val()));
     $('#formularioagregar').on('submit',function(e){
        guardareditar(e); 
     });
@@ -19,10 +20,39 @@ function init(){
     
 }
 function lista(){
-    tabla=$('#tbllista_movinterno').dataTable().DataTable();
+    tabla=$('#tbllista_movinterno').dataTable({
+        'aProcessing':true,
+        'aServerSide':true,
+        'ajax':{
+          url:'../ajax/movinterno.php?op=listar',
+          type:'get',
+          dataType: 'json',
+          error:function(e){
+              console.log(e.responseText);
+          }
+        },
+         "bDestroy":true,
+        "iDisplayLength":10,
+        "order":[[0,"asc"]]
+    
+    }).DataTable();
 }
 function listac(){
-    tabla=$('#tbllista_movinternoc').dataTable().DataTable();
+    tabla2=$('#tbllista_movinternoc').dataTable({
+        'aProcessing':true,
+        'aServerSide':true,
+        'ajax':{
+          url:'../ajax/movinternoc.php?op=listar',
+          type:'get',
+          dataType: 'json',
+          error:function(e){
+              console.log(e.responseText);
+          }
+        },
+         "bDestroy":true,
+        "iDisplayLength":10,
+        "order":[[0,"asc"]]
+    }).DataTable();
 }
 function mostrarmodal(){
     var idmovinterno = $('#idmovinterno').val();
@@ -92,9 +122,10 @@ function limpiar(){
     $('#medida').val('');
     $('#bloque').val('');
     $('#cliente').val('');
-    $('#actividad').val('');
+    $('#actividad').val('Mov Interno');
     $('#patio').val('');
     $('#motivo').val('');
+    $('#semana').val(semanadelmes($('#fechamov').val()));
     listarcomboingreso();
     
 }
@@ -116,8 +147,9 @@ function limpiarc(){
     $('#contenedorc').val('');
     $('#contenedorc').selectpicker('refresh');
     $('#clientec').val('');
-    $('#actividadc').val('');
+    $('#actividadc').val('Mov. Interno');
     $('#comentario').val('');
+    $('#semanac').val(semanadelmes($('#fechamovc').val()));
     listarcomboingresoc();
 }
 function guardareditar(e){
@@ -197,6 +229,61 @@ function guardareditar(e){
             text:'Se ha generado los siguiente errores: \n' + mensajeerror
         })
     };
+}
+function guardareditarc(e){
+    e.preventDefault();
+    var error=0;
+    var mensajeerror="";
+    
+    if ($('#clientec').val==''){
+        error+=1;
+             mensajeerror=mensajeerror+' Debe de ingresar el nombre del cliente';
+    }else{
+          if(error>=1){
+            error=error-1;
+        }
+    }
+    if ($('#actividadc').val()==''){
+            error+=1;
+             mensajeerror=mensajeerror+' Debe de Ingresar el nombre de la actividad';
+    }else{
+          if(error>=1){
+            error=error-1;
+        }
+    }
+    $('#btnGuardar2').prop('#disabled',false);
+    
+    var datosform=new FormData($('#formularioagregarc')[0]);
+    
+    if (error==0){
+           $.ajax({
+           url:'../ajax/movinternoc.php?op=guardareditar',
+           type:'POST',
+           data: formdata,
+           contentType:false,
+           processData:false,
+           datatype:'json',
+           success:function(da){
+                var d=da.substring(0,2);
+                if(d=='Se'){
+                    swal({icon:'success',title:'Movimiento Interno',text:da});
+                    tabla.ajax.reload();
+                    $('#getmodalmovinterno').modal('toggle');
+                }else if(d=='Er'){
+                    swal({icon:'warning',title:'Error al Grabar el Movimiento Interno',text:da});
+                }else {
+                    swal('Error: -> '. e);
+                }
+           },
+        });
+    }else{
+         swal({
+            title:'Error al Grabar',
+            icon:'warning',
+            text:'Se ha generado los siguiente errores: \n' + mensajeerror
+        })
+    }
+    
 }
 function semanadelmes(fecha){
     var dt = new Date(fecha);

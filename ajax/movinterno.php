@@ -99,6 +99,33 @@ switch ($_GET['op']){
             echo $rspta ? 'Se ha Actualizado el movimiento interno seleccionado satisfactoriamente':'Error: Se ha generado un error al grabar';
         }
         break;
-    case 'guardareditarc':
+    case 'listar':
+        $rspta=$minter->listar_movinterno();
+        $datos=Array();
+        while ($reg=$rspta->fetch_object()){
+            $datos[]=array(
+                '0'=>$reg->Id_Movimientos,
+                '1'=>$reg->Semana,
+                '2'=>$reg->anio,
+                '3'=>$reg->Fecha_movimiento,
+                '4'=>$reg->Hora_Ingreso,
+                '5'=>$reg->No_Contenedor,
+                '6'=>$reg->Medida,
+                '7'=>$reg->bnueva,
+                '8'=>$reg->area,
+                '9'=>$reg->Cliente,
+                '10'=>$reg->Actividad,
+                '11'=>$reg->Motivo,
+                '12'=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->Id_Movimientos.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Monitoreo"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Movimientos.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular"></i></button> '
+                    
+            );
+        }
+         $results=array(
+            "sEcho"=>1,
+            "iTotalRecords"=> count($datos),
+            "iTotalDisplayRecords"=> count($datos),
+            "aaData"=>$datos
+        );
+        echo json_encode($results);
         break;
 }

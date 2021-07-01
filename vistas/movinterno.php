@@ -53,7 +53,7 @@ if (!isset($_SESSION['nombre'])){
                                 <div class="tab-pane" id="movintcab">
                                     <h4 class="box-title"> Movimientos Interno Cabezales <button class="btn btn-success" id="btnagregar" onclick="mostrarmodalc()"><i class="fa fa-plus-circle"></i>  Agregar</button> </h4>
                                     <div class="panel-body table-responsive" id="listamov_internoc">
-                                        <table id="tbllista_movinternoc" class="table table-striped table-bordered table-condensed table-hover ">
+                                        <table id="tbllista_movinternoc" class="table table-striped table-bordered table-condensed table-hover " style="width: 100%">
                                             <thead>
                                             <th>No.</th>
                                             <th>Semana</th>
@@ -199,18 +199,18 @@ if (!isset($_SESSION['nombre'])){
                         <div class="box-body">
                             <div class="row">
                                 <input type="hidden" id="idmovic" name="idmovic"><!-- comment -->
-                                <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                <div class="form-group col-lg-2 col-md-4 col-xs-4">
                                     <label>Semana</label>
                                     <input type="text" class="form-control" id="semanac" name="semanac" autocomplete="off" placeholder="Semana" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
                                 </div>
-                                <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                <div class="form-group col-lg-3 col-md-4 col-xs-4">
                                     <label>Fecha de Mov. Interno</label>
                                     <input type="date" class="form-control" id="fechamovc" name="fechamovc" autocomplete="off" placeholder="Fecha de Mov. Interno" value="<?php  echo date("Y-m-d"); ?>" required="">
                                 </div>
-                                <div class="form-group col-lg-4 col-md-4 col-xs-4">
+                                <div class="form-group col-lg-3 col-md-4 col-xs-4">
                                     <label>Hora Ingreso</label>
                                     <div class="input-group clockpicker">
-                                        <input type="text" class="form-control" id="Hingresoc" name="Hingresoc" autocomplete="off" placeholder="Hora Ingreso" value="<?php $hora2 =new DateTime("now"); echo $hora2->format('H:i:s');  ?>" required="">
+                                        <input type="text" class="form-control" id="hingresoc" name="hingresoc" autocomplete="off" placeholder="Hora Ingreso" value="<?php $hora2 =new DateTime("now"); echo $hora2->format('H:i:s');  ?>" required="">
                                          <span class="input-group-addon">
                                          <span class="glyphicon glyphicon-time"></span>
                                          </span>
@@ -229,19 +229,19 @@ if (!isset($_SESSION['nombre'])){
                                     <input type="text" class="form-control" id="clientec" name="clientec" autocomplete="off" placeholder="Cliente" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-xs-4">
-                                    <label>Atividad</label>
-                                    <input type="text" class="form-control" id="actividadc" name="actividadc" autocomplete="off" placeholder="Actividad" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
+                                    <label>Actividad</label>
+                                    <input type="text" class="form-control" id="actividadc" name="actividadc" autocomplete="off" placeholder="Actividad" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="" value="Mov Interno">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-6 col-md-6 col-xs-6">
                                   <label>Comentario</label>
-                                    <textarea type="text" class="form-control" id="comentario" name="comentario" autocomplete="off" placeholder="Comentario" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required=""></textarea>
+                                    <textarea type="text" class="form-control" id="comentarioc" name="comentarioc" autocomplete="off" placeholder="Comentario" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required=""></textarea>
                                 </div>
                             </div>
                              <div class="row">
                                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+                                    <button class="btn btn-primary" type="submit" id="btnGuardar2"><i class="fa fa-save"></i> Guardar</button>
                                     <button class="btn btn-danger pull-right" onclick="cancelarformc()" data-dismiss="modal" type="button"><i class="fa fa-close"></i> Cancelar</button>
                                 </div>
                              </div>

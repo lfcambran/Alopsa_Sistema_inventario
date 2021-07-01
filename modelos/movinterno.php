@@ -43,4 +43,20 @@ class movinterno{
         $sql="call actualizar_movinterno($idmovi,$semana,$anio,'$fecha','$hora',$contenedor,$bloquea,$medida,$patio,$area,$bloque,'$cliente','$activada','$motivo','$opcion')";
         return ejecutarConsulta($sql);
     }
+    public function insertarc($semana,$fechamov,$hora,$contenedor,$cliente,$actividad,$motivo,$usuario){
+        $sql="call inserta_movinternoc($semana,'$fechamov','$hora',$contenedor,'$cliente,'$actividad','$motivo',$usuario)";
+        return ejecutarConsulta($sql);
+    }
+    public function actualizarc($idmovintc,$semana,$fechamov,$hora,$contenedor,$cliente,$actividad,$motivo){
+        $sql="call actualizar_movinternoc($idmovintc,$semana,'$fechamov','$hora',$contenedor,'$cliente,'$actividad','$motivo')";
+        return ejecutarConsulta($sql);
+    }
+    public function listar_movinterno_cabezal(){
+        $sql="call listar_movinterno('mic')";
+        return ejecutarConsulta($sql);
+    }
+    public function listar_movinterno() {
+        $sql="call listar_movinterno('mi')";
+        return ejecutarConsulta($sql);
+    }
 }
