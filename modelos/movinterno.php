@@ -31,16 +31,16 @@ class movinterno{
         return ejecutarConsulta($sql);
     }
     public function bloque_cont($idc) {
-        $sql="select b.Descripcion from contenedor_posicion_patio cpp inner JOIN bloque b on b.id_bloque=cpp.idbloque
+        $sql="select b.Descripcion,cpp.id_conte_posi from contenedor_posicion_patio cpp inner JOIN bloque b on b.id_bloque=cpp.idbloque
                 where cpp.id_ingre_m=$idc";
         return ejecutarConsultaSimpleFila($sql);
     }
-    public function insertar($semana,$anio,$fecha,$hora,$contenedor,$bloquea,$medida,$patio,$area,$bloque,$cliente,$activada,$motivo,$opcion,$idusuario){
-        $sql="call insertar_movinterno($semana,$anio,'$fecha','$hora',$contenedor,$bloquea,$medida,$patio,$area,$bloque,'$cliente','$activada','$motivo','$opcion',$idusuario)";
+    public function insertar($semana,$anio,$fecha,$hora,$contenedor,$bloquea,$medida,$patio,$area,$bloque,$cliente,$activada,$motivo,$opcion,$idusuario,$idcont){
+        $sql="call insertar_movinterno($semana,$anio,'$fecha','$hora',$contenedor,$bloquea,$medida,$patio,$area,$bloque,'$cliente','$activada','$motivo','$opcion',$idusuario,$idcont)";
         return ejecutarConsulta($sql);
     }
-    public function actualizar($idmovi,$semana,$anio,$fecha,$hora,$contenedor,$bloquea,$medida,$patio,$area,$bloque,$cliente,$activada,$motivo,$opcion){
-        $sql="call actualizar_movinterno($idmovi,$semana,$anio,'$fecha','$hora',$contenedor,$bloquea,$medida,$patio,$area,$bloque,'$cliente','$activada','$motivo','$opcion')";
+    public function actualizar($idmovi,$semana,$anio,$fecha,$hora,$contenedor,$bloquea,$medida,$patio,$area,$bloque,$cliente,$activada,$motivo,$opcion,$idcont){
+        $sql="call actualizar_movinterno($idmovi,$semana,$anio,'$fecha','$hora',$contenedor,$bloquea,$medida,$patio,$area,$bloque,'$cliente','$activada','$motivo','$opcion',$idcont)";
         return ejecutarConsulta($sql);
     }
     public function insertarc($semana,$fechamov,$hora,$contenedor,$cliente,$actividad,$motivo,$usuario){

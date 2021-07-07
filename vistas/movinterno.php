@@ -116,6 +116,7 @@ if (!isset($_SESSION['nombre'])){
                                                                 <label>Contenedor</label>
                                                                 <select class="form-control select-picker" id="contenedor" name="contenedor" data-live-search="true">
                                                                     </select>
+                                                                <input type="hidden" id="idcontenedor" name="idcontenedor" >
                                                                 
                                                             </div>
                                                             <div class="form-group col-lg-2 col-md-12 col-xs-12">

@@ -17,13 +17,14 @@ $hora=isset($_POST['hingreso'])? limpiarCadena($_POST['hingreso']):'';
 $contenedor= isset($_POST['contenedor'])? limpiarCadena($_POST['contenedor']):'';
 $bloquea= isset($_POST['bloqueanteriorh'])? limpiarCadena($_POST['bloqueanteriorh']):'';
 $med=isset($_POST['medida'])? limpiarCadena($_POST['medida']):'';
-$pat=isset($_POST['patio'])? limpiarCadena($_POST['patop']):'';
+$pat=isset($_POST['patio'])? limpiarCadena($_POST['patio']):'';
 $idarea= isset($_POST['areap'])? limpiarCadena($_POST['areap']):'';
 $idbloque= isset($_POST['bloque'])? limpiarCadena($_POST['bloque']):'';
 $cliente= isset($_POST['cliente'])? limpiarCadena($_POST['cliente']):'';
 $acti=isset($_POST['actividad'])? limpiarCadena($_POST['actividad']):'';
 $motivo= isset($_POST['motivo'])? limpiarCadena($_POST['motivo']):'';
 $opcion=isset($_POST['opcion'])? limpiarCadena($_POST['opcion']):'';
+$idcontenedor= isset($_POST['idcontenedor'])? limpiarCadena($_POST['idcontenedor']):'';
 $user_id=$_SESSION['idusuario'];
 
 switch ($_GET['op']){
@@ -81,17 +82,18 @@ switch ($_GET['op']){
             $rspta=$minter->bloque_cont($iding);
             echo json_encode($rspta);
         break;
+    
     case 'guardareditar':
         if (empty($idmovinterno)){
-            $rspta=$minter->insertar($semana,$anio,$fecha,$hora,$contenedor,$bloquea,$med,$pat,$idarea,$idbloque,$cliente,$acti,$motivo,$opcion,$user_id);
+            $rspta=$minter->insertar($semana,$anio,$fecha,$hora,$contenedor,$bloquea,$med,$pat,$idarea,$idbloque,$cliente,$acti,$motivo,$opcion,$user_id,$idcontenedor);
             if ($rspta==true){
                  $hoy = date("Y/m/d");
                 $hora_actual=date("H:i:s");
                 $bitacora->insertar_bitacora('Inserta', $hoy, $hora_actual,$_SESSION['nombre'] ,'Movimiento interno realizado','movimientos');
            }
-           echo $rspta ? 'Se Realizo el movimiento interno correctamente: \n se modifico la posicion del contenedor':'Error: se ha generado un error al grabar';
+           echo $rspta ? 'Se Realizo el movimiento interno correctamente; Se modifico la posicion del contenedor':'Error: se ha generado un error al grabar';
         }else{
-            $rspta=$minter->actualizar($idmovinter,$semana,$anio,$fecha,$hora,$contenedor,$bloquea,$med,$pat,$idarea,$idbloque,$cliente,$acti,$motivo,$opcion,$user_id);
+            $rspta=$minter->actualizar($idmovinter,$semana,$anio,$fecha,$hora,$contenedor,$bloquea,$med,$pat,$idarea,$idbloque,$cliente,$acti,$motivo,$opcion,$idcontenedor);
             if ($rspta==true){
                 $hoy = date("Y/m/d");
                 $hora_actual=date("H:i:s");
@@ -108,11 +110,11 @@ switch ($_GET['op']){
                 '0'=>$reg->Id_Movimientos,
                 '1'=>$reg->Semana,
                 '2'=>$reg->anio,
-                '3'=>$reg->Fecha_movimiento,
+                '3'=>$reg->Fecha_Movimiento,
                 '4'=>$reg->Hora_Ingreso,
                 '5'=>$reg->No_Contenedor,
                 '6'=>$reg->Medida,
-                '7'=>$reg->bnueva,
+                '7'=>$reg->bnuevo,
                 '8'=>$reg->area,
                 '9'=>$reg->Cliente,
                 '10'=>$reg->Actividad,

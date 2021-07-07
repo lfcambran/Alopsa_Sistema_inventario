@@ -122,10 +122,13 @@ function limpiar(){
     $('#contenedor').val('');
     $('#contenedor').selectpicker('refresh');
     $('#medida').val('');
+    $('#medida').selectpicker('refresh');
     $('#bloque').val('');
+    $('#bloque').selectpicker('refresh');
     $('#cliente').val('');
     $('#actividad').val('Mov Interno');
     $('#patio').val('');
+    $('#patio').selectpicker('refresh');
     $('#motivo').val('');
     $('#semana').val(semanadelmes($('#fechamov').val()));
     listarcomboingreso();
@@ -218,11 +221,12 @@ function guardareditar(e){
                 if(d=='Se'){
                     swal({icon:'success',title:'Movimiento Interno',text:da});
                     tabla.ajax.reload();
+                    limpiar();
                     $('#getmodalmovinterno').modal('toggle');
                 }else if(d=='Er'){
                     swal({icon:'warning',title:'Error al Grabar el Movimiento Interno',text:da});
                 }else {
-                    swal('Error: -> '. e);
+                    swal('Error: -> '.da);
                 }
            },
         });
@@ -429,6 +433,7 @@ $('#contenedor').change(function(){
            d=JSON.parse(data);
            $('#bloqueanterior').val(d.Descripcion);
            $('#bloqueanteriorh').val(d.Descripcion);
+           $('#idcontenedor').val(d.id_conte_posi);
        }
     );
 });
