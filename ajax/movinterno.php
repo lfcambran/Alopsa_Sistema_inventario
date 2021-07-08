@@ -74,6 +74,16 @@ switch ($_GET['op']){
         }    
         
         break;
+    case 'mostraropcionac';
+        $va=$_REQUEST['valor'];
+        $opc='';
+        if ($va=='DRY'){
+            echo '<div class="form-group col-lg-2 col-md-12 col-xs-12"><label>DRY/REFF</label><select class="form-control select-picker" data-live-search="true" id="opcion" name="opcion" ><option value="DRY" selected >DRY</option><option value="REFF">REFF</option></select> </div>  ';
+        }else {
+            echo '<div class="form-group col-lg-2 col-md-12 col-xs-12"><label>DRY/REFF</label><select class="form-control select-picker" data-live-search="true" id="opcion" name="opcion" ><option value="DRY" >DRY</option><option value="REFF" selected>REFF</option></select> </div>  ';
+        }
+        
+        break;
     case 'mostraropcion':
         echo '<div class="form-group col-lg-2 col-md-12 col-xs-12"><label>DRY/REFF</label><select class="form-control select-picker" data-live-search="true" id="opcion" name="opcion" ><option value="DRY">DRY</option><option value="REFF">REFF</option></select> </div>  ';
         break;
@@ -84,7 +94,7 @@ switch ($_GET['op']){
         break;
     
     case 'guardareditar':
-        if (empty($idmovinterno)){
+        if (empty($idmovinter)){
             $rspta=$minter->insertar($semana,$anio,$fecha,$hora,$contenedor,$bloquea,$med,$pat,$idarea,$idbloque,$cliente,$acti,$motivo,$opcion,$user_id,$idcontenedor);
             if ($rspta==true){
                  $hoy = date("Y/m/d");
@@ -97,7 +107,7 @@ switch ($_GET['op']){
             if ($rspta==true){
                 $hoy = date("Y/m/d");
                 $hora_actual=date("H:i:s");
-                $bitacora->insertar_bitacora('Actualizar', $hoy, $hora_actual,$_SESSION['nombre'] ,'Se ha actualizado el registro numero '.$idposcontpre,'movimientos');
+                $bitacora->insertar_bitacora('Actualizar', $hoy, $hora_actual,$_SESSION['nombre'] ,'Se ha actualizado el registro numero '.$idmovinter,'movimientos');
             }
             echo $rspta ? 'Se ha Actualizado el movimiento interno seleccionado satisfactoriamente':'Error: Se ha generado un error al grabar';
         }
@@ -119,7 +129,7 @@ switch ($_GET['op']){
                 '9'=>$reg->Cliente,
                 '10'=>$reg->Actividad,
                 '11'=>$reg->Motivo,
-                '12'=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->Id_Movimientos.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Monitoreo"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Movimientos.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular"></i></button> '
+                '12'=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->Id_Movimientos.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Movimiento"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Movimientos.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular"></i></button> '
                     
             );
         }
@@ -130,5 +140,10 @@ switch ($_GET['op']){
             "aaData"=>$datos
         );
         echo json_encode($results);
+        break;
+    case 'mostrar':
+        $id_movint=$_REQUEST['idmovinterno'];
+        $rspta=$minter->mostrar($id_movint);
+        echo json_encode($rspta);
         break;
 }

@@ -126,11 +126,24 @@ function limpiar(){
     $('#bloque').val('');
     $('#bloque').selectpicker('refresh');
     $('#cliente').val('');
+    $('#cliente').trigger('change');
     $('#actividad').val('Mov Interno');
     $('#patio').val('');
     $('#patio').selectpicker('refresh');
+    $('#patio').trigger('change');
     $('#motivo').val('');
+    $('#areap').val('');
     $('#semana').val(semanadelmes($('#fechamov').val()));
+    $('#edita').val('');
+    $('#idbloque').val("");
+    $('#idareap').val("");
+    $('#idpatio').val("");
+    $('#bloqueanteriorh').val("");
+    $('#bloqueanterior').val("");
+    $('#bloque').trigger('change');
+    $('#areap').trigger('change');
+    $('#idmovinterno').val('');
+    $('#opcionac').val('');
     listarcomboingreso();
     
 }
@@ -293,6 +306,49 @@ function guardareditarc(e){
     }
     
 }
+function mostrar(val){
+    $.post('../ajax/movinterno.php?op=mostrar',{idmovinterno:val},
+    function(data,status){
+        
+        if (status=='success'){
+            d=JSON.parse(data);
+            $('#edita').val('ac');
+            $('#idmovinterno').val(d.Id_Movimientos);
+            $('#semana').val(d.Semana);
+            $('#anio').val(d.anio);
+            $('#fechamov').val(d.Fecha_Movimiento);
+            $('#hingreso').val(d.Hora_Ingreso);
+            $('#contenedor').val(d.Contenedor);
+            $('#contenedor').selectpicker('refresh');
+            $('#idcontenedor').val(d.Contenedor);
+            $('#bloqueanterior').val(d.banterior);
+            $('#bloqueanteriorh').val(d.banterior);
+            $('#medida').val(d.Medida);
+            $('#medida').selectpicker('refresh');
+            $("#idpatio").val(d.Patio);
+            $("#patio").val(false).trigger("change");
+            $('#idareap').val(d.area);
+            $('#areap').val(true).trigger("change");
+            $('#patio').val(d.Patio);
+            $('#patio').selectpicker('refresh');
+            $('#areap').val(d.area);
+            $('#areap').selectpicker('refresh');
+            $('#bloque').val(d.bnuevo);
+            $('#idbloque').val(d.bnuevo);
+            $('#bloque').selectpicker('refresh');
+            $('#cliente').val(d.Cliente);
+            $('#motivo').val(d.Motivo);
+            $('#actividad').val(d.Actividad);
+            $('#cliente').trigger('change');
+            $('#opcionac').val(d.opciont);
+
+            mostrarmodal();
+        }else{
+            swal('Se Genero un error al consultar la informacion del movimiento'+status);
+        }
+    }
+    );
+}
 function mostrarc(val){
     $.post('../ajax/movinternoc.php?op=mostrar',{idmovinternoc:val},
     function(data,status){
@@ -414,6 +470,12 @@ function semanadelmes(fecha){
 
 $('#patio').change(function(){
      var idpatio=$('#patio').val();
+     if (idpatio===null){
+         idpatio=$('#idpatio').val();
+     }else{
+         
+         idpatio=$('#patio').val();
+     }
      $.ajax({
         url:'../ajax/movinterno.php?op=listararea',
         data:{id_patio:idpatio},
@@ -423,6 +485,10 @@ $('#patio').change(function(){
             $('#areap').removeAttr('disabled');
             $('#areap').html(r);
             $('#areap').selectpicker('refresh');
+            if ($('#edita').val()=='ac'){
+                $('#areap').val($('#idareap').val());
+                $('#areap').selectpicker('refresh');
+            }
         }
      });
 });
@@ -439,28 +505,54 @@ $('#contenedor').change(function(){
 });
 $('#areap').change(function(){
      var idarea=$('#areap').val();
+     if (idarea===null){
+           idarea=$('#idareap').val();
+     }else{
+         idarea=$('#areap').val();
+       
+     }
+             
      $.ajax({
         url:'../ajax/movinterno.php?op=listarbloque',
         data:{id_area:idarea},
         type:"get",
         datatype: 'json',
-        success:function(r){
+        success:function(r,status){
            $('#bloque').removeAttr('disabled');
            $('#bloque').html(r);
            $('#bloque').selectpicker('refresh');
+           if ($('#edita').val()=='ac'){
+               $("#bloque").val($('#idbloque').val());
+                $('#bloque').selectpicker('refresh');
+           }
         }
      });
 });
 $('#cliente').change(function(){
         if ($('#cliente').val()=='MAERSK'){
+            if ($('#edita').val()=='ac'){
+                var v=$('#opcionac').val();
+                $.ajax({
+                    url:'../ajax/movinterno.php?op=mostraropcionac',
+                    type: 'get',
+                    data: {valor:v},
+                    datatype:'json',
+                     success:function(r){                    
+                        $('#opcion').html(r);
+                    }
+                });
+            }else{
             $.ajax({
                url:'../ajax/movinterno.php?op=mostraropcion',
                type:'get',
                datatype:'json',
-               success:function(r){
-                   $('#opcion').html(r);
-               }
+               success:function(r){                    
+                        $('#opcion').html(r);
+                    }
             });
+        } 
+    }else {
+            $('#opcion').html("");
         }
           
 })

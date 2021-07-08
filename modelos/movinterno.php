@@ -63,6 +63,10 @@ class movinterno{
         $sql="select * from movimientosc where id=$id";
         return ejecutarConsultaSimpleFila($sql);
     }
+    public function mostrar($id){
+        $sql="select * from movimientos where Id_Movimientos=$id";
+        return ejecutarConsultaSimpleFila($sql);
+    }
     public function desactivarc($id){
         $sql="update movimientosc set estado='inactivo' where id=$id";
         return ejecutarConsulta($sql);

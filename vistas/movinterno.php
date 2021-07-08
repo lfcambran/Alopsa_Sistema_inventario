@@ -80,7 +80,8 @@ if (!isset($_SESSION['nombre'])){
                                                 <div class="box box-info">
                                                     <div class="box-body">
                                                         <div class="row">
-                                                            <input type="hidden" id="idmovinterno" name="idmovinterno"><!-- comment -->
+                                                            <input type="hidden" id="idmovinterno" name="idmovinterno">
+                                                            <input type="hidden" id="edita" nama="edita">
                                                             <div class="form-group col-lg-2 col-md-4 col-xs-4">
                                                                 <label>Semana</label>
                                                                 <input type="text" class="form-control" id="semana" name="semana" autocomplete="off" placeholder="Semana" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required=""><!-- comment -->
@@ -131,6 +132,7 @@ if (!isset($_SESSION['nombre'])){
                                                             <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Patio:</label>
                                                                 <select name="patio" id="patio" class="form-control select-picker" data-live-search="true" ></select>
+                                                                <input type="hidden" id="idpatio" name="idpatio" >
                                                             </div>
                                                           </div>
                                                         <div class="row">
@@ -138,17 +140,20 @@ if (!isset($_SESSION['nombre'])){
                                                            <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Area:</label>
                                                                 <select class="form-control select-picker" id="areap" name="areap" required=""></select>
+                                                                <input type="hidden" id="idareap" name="idareap">
                                                             </div>
                                                              <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Bloque</label>
                                                                 <select class="form-control select-picker" id="bloque" name="bloque"  required=""></select>
+                                                                <input type="hidden" id="idbloque" name="idbloque">
                                                             </div>
                                                             <div class="form-group col-lg-3 col-md-12 col-xs-12">
                                                                 <label>Cliente</label>
                                                                 <input type="text" class="form-control" id="cliente" name="cliente" autocomplete="off" placeholder="Cliente" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" required="">
                                                             </div>
+                                                            <input type="hidden" id="opcionac" name="opcionac" >
                                                             <div id="opcion"></div>
-                                                        
+                                                            
                                                        
                                                         </div>
                                
