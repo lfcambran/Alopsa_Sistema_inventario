@@ -511,7 +511,7 @@ $('#areap').change(function(){
          idarea=$('#areap').val();
        
      }
-             
+     if (!idarea==""){   
      $.ajax({
         url:'../ajax/movinterno.php?op=listarbloque',
         data:{id_area:idarea},
@@ -527,6 +527,10 @@ $('#areap').change(function(){
            }
         }
      });
+}else{
+    $('#bloque').html('');
+    $('#bloque').selectpicker('refresh');
+}
 });
 $('#cliente').change(function(){
         if ($('#cliente').val()=='MAERSK'){
