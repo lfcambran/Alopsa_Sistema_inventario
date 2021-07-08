@@ -75,4 +75,8 @@ class movinterno{
         $sql="update movimientosc set estado='activo' where id=$id";
         return ejecutarConsulta($sql);
     }
+    public function desactivar($id){
+        $sql="update movimientos set estado='inactivo' where Id_Movimientos=$id";
+        return ejecutarConsulta($sql);
+    }
 }

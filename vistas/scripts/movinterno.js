@@ -370,6 +370,11 @@ function mostrarc(val){
        mostrarmodalc() 
     });
 }
+function desactivar(val){
+    $('#idmovinterno').val(val);
+    $('#tipomov').val('interno');
+    $('#getmodalanmintc').modal('show');
+}
 function dasactivarc(val){
    $('#idmov_intc').val(val);
    $('#tipomov').val('internoc');
@@ -406,17 +411,57 @@ function validarusuario(e){
     }else if ($("#password").val()=="") {
         swal({title:"Parametro Requerido",text:'Debe de Ingresar su contraseña para continuar'});
     }else{
-        $.post("../ajax/usuario.php?op=validaranulacion",{"logina":usuario,"clavea":password},
+       $.post("../ajax/usuario.php?op=validaranulacion",{"logina":usuario,"clavea":password},
         function(data){
             if (data!="null"){
-                var idmovintc=$("#idmov_intc").val();
-                   desactivar_movinterc(idmovintc);
+                if ($('#internoc').val=='internoc'){
+                         var idmovintc=$("#idmov_intc").val();
+                          desactivar_movinterc(idmovintc);
+                      }else{
+                          var idmovint=$('#idmovinterno').val();
+                          desactivar_movinter(idmovint);
+                      }
             }else{
                 swal({title:'Anulacion Cancelada',title:"No cuenta con el acceso para anular "})
             }
         }
         );
     }
+}
+function desactivar_movinter(val){
+    swal({
+        title: "Anulacion de Movimiento",
+        text: "Esta seguro de anular el movimiento",
+        icon: "warning",
+        buttons:true,
+        dangerMode:true,
+    })
+            .then((willDelete)=>{
+                if (willDelete){
+                    $.post("../ajax/movinterno.php?op=desactivar",{idmov:val},function(e){
+                        var d=e.substring(0,2);
+                        if (d=="Se"){
+                            limpiar();
+                            limpiarc();
+                            tabla.ajax.reload();
+                            swal({icon:'success',title:'Anulacion el Movimiento Interno',title:e});
+                        }else if (d="No"){
+                            limpiarc();
+                            limpiar();
+                            swal({icon:'warning',title:'Anulacion del Movimiento Interno',title:e});
+                        }else {
+                             swal("Error: "+ e );
+                        }
+                                $("#usuario").val('');
+                                $("#password").val('');
+                                $('#getmodalanmintc').modal('toggle');
+				tabla.ajax.reload();
+                    });
+                }else{
+                     swal("Se ha Cancelado la Accion por el Usuario!");
+                    $('#getmodalanmintc').modal('toggle');
+                }
+            });
 }
 function desactivar_movinterc(val){
     swal({
@@ -431,9 +476,12 @@ function desactivar_movinterc(val){
                     $.post("../ajax/movinternoc.php?op=desactivar",{idmovinterc:val},function(e){
                        var c=e.substring(0,2);
                        if (c=="Se"){
+                           limpiarc();
                            limpiar();
+                           tabla2.ajax.reload();
                            swal({icon:'success',title:'Anulacion el Movimiento Interno',title:e});
                        }else if (c=="No"){
+                           limpiarc();
                            limpiar();
                             swal({icon:'warning',title:'Anulacion del Movimiento Interno',title:e});
                        }else{

@@ -116,6 +116,10 @@ switch ($_GET['op']){
         $rspta=$minter->listar_movinterno();
         $datos=Array();
         while ($reg=$rspta->fetch_object()){
+            $opcione="";
+            if ($reg->estado=='activo'){
+                $opcione='<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->Id_Movimientos.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular"></i></button> ';
+            }
             $datos[]=array(
                 '0'=>$reg->Id_Movimientos,
                 '1'=>$reg->Semana,
@@ -129,7 +133,7 @@ switch ($_GET['op']){
                 '9'=>$reg->Cliente,
                 '10'=>$reg->Actividad,
                 '11'=>$reg->Motivo,
-                '12'=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->Id_Movimientos.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Movimiento"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="dasactivar('.$reg->Id_Movimientos.')"><i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="Anular"></i></button> '
+                '12'=>'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->Id_Movimientos.')"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Editar Movimiento"></i></button>'.' '. $opcione
                     
             );
         }
@@ -145,5 +149,10 @@ switch ($_GET['op']){
         $id_movint=$_REQUEST['idmovinterno'];
         $rspta=$minter->mostrar($id_movint);
         echo json_encode($rspta);
+        break;
+    case 'desactivar':
+        $idmo=$_REQUEST['idmov'];
+        $rspta=$minter->desactivar($idmo);
+        echo $rspta?'Se ha desactivados correctamente el movimiento Interno':'No se pudo desactivar el registro';
         break;
 }

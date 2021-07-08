@@ -269,7 +269,7 @@ if (!isset($_SESSION['nombre'])){
                 <form action="" name="formularioanulacion" id="formularioanulacion" method="POST">
                     <div class="form-group col-lg-12 col-md-12 col-xs-12">
                         <input type="hidden" id="idmov_intc" name="idmov_intc">
-                        <input type="hidden" id="tipomov" name="tipomov">
+                        <input type="hidden" id="internoc" name="tipomov">
                         <label>Usuario:</label>
                         <input type="text" class="form-control" name="usuario" id="usuario">
                         <label>Contraseña:</label>
