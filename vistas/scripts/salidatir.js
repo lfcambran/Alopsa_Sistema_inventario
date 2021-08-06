@@ -14,6 +14,7 @@ $(document).ready(function() {
 
 function init(){
     listartirsalida();
+    listartirs();
 }
 
 function listartirsalida(){
@@ -28,4 +29,11 @@ function mostrarmodal(){
         $('#titulo').html("Modificacion del TIR No."+idtirs);
     }
     $('#getmodaltirs').modal('toggle');
+}
+
+function listartirs(){
+   $.post("../ajax/salidatirs.php?op=listartirs",function(r){
+      $("#notir").html(r);
+      $("#notir").selectpicker('refresh');
+   });
 }

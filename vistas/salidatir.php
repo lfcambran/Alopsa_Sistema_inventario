@@ -60,10 +60,10 @@ if (!isset($_SESSION['nombre'])){
                         </div>
                         <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
                           
-                            <label>Contenedor:</label>
-                                <select name="contenedor" id="contenedor" class="form-control select-picker" data-live-search="true">
+                            <label>TIR:</label>
+                                <select name="notir" id="notir" class="form-control select-picker" data-live-search="true">
                                 </select>
-                                <input type="hidden" id="idingreso" name="idingreso">
+                                <input type="hidden" id="idtir" name="idtir">
                         </div>
                     </div>
                     

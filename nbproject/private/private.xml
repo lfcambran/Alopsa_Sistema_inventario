@@ -7,8 +7,10 @@
             <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/header.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/daniostir.php</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresotir.js</file>
             <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/salidatir.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/footer.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/daniostir.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/salidatir.js</file>
         </group>
     </open-files>
 </project-private>
