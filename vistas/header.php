@@ -240,7 +240,7 @@ if ($_SESSION['acceso']==1) {
                         </span>
                      </a>
                      <ul class="treeview-menu">
-                     <li><a href="reportestir.php"><i class="fa fa-file-text-o"></i><span>Reportes Ingresos </span></a></li>
+                     <li><a href="reporteingreso.php"><i class="fa fa-file-text-o"></i><span>Reportes Ingresos </span></a></li>
                         <li><a href="reportestir.php"><i class="fa fa-file-pdf-o"></i><span>Reportes TIR Emitidos </span></a></li>
                         <li><a href="reportestira.php"><i class="fa fa-remove"></i><span>Reportes TIR Anulados </span></a></li>
                      </ul>

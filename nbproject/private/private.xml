@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/conexiones.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/conexiones.js</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/conexiones.php</file>
-            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/conexiones.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/dashboard.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/datostir.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/modelos/reportes.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/daniostir.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/exportar_re/exportaring.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/reportesingresos.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/reportes.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresosm.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/ingresotir.js</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/reportestir.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/reporteingreso.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/exportar_re/exportar.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/ajax/flotatransporte.php</file>
+            <file>file:/C:/xampp/htdocs/inv_contenedores/vistas/scripts/reportestir.js</file>
         </group>
     </open-files>
 </project-private>

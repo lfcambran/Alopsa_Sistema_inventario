@@ -22,6 +22,11 @@ class reportes_g{
         $sql="call reportes_tirs('$fechai','$fechaf','anu_ex')";
         return ejecutarConsulta($sql);
     }
+    public function reporte_ingresos($fechai,$fechaf){
+        $sql="call reportes_ingreso('$fechai','$fechaf')";
+        return ejecutarConsulta($sql);
+    }
+
 }   
     
 
