@@ -29,7 +29,7 @@ if (!isset($_SESSION['nombre'])){
                                 <label>Fecha Final:</label>
                                 <input type="date" id="fechafinal" name="fechafinal" class="form-control" value="<?php echo _ultimo_dia_mes(); ?>">
                             </div>
-                            <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 </br>
                                 <button class="btn btn-primary" id="verreporte" name="verreporte" onclick="mostrarre()"><i class="fa fa-files-o"></i>  Ver Reporte</button>
                                 <button class="btn btn-info" id="exportar" name="exportar" onclick="exportar()"><i class="fa fa-arrow-circle-o-down"></i> Exportar Reporte</button>
