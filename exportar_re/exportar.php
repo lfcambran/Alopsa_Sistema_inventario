@@ -80,7 +80,6 @@ $pdf->SetTextColor(0, 10, 0);
         $pdf->Cell($w[11],6,$consulta['Barco'],1,0,'C');
         $pdf->Ln();
     }
-    
     $pdf->Output();
 } else {
     echo "<p>No parameters</p>";

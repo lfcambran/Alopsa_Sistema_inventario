@@ -124,7 +124,7 @@ switch ($_GET['reporte']){
        case 'rtir':
            
            $datosExcel->setActiveSheetIndex(0);
-           $datosExcel->getActiveSheet()->setTitle('Reporte Ingresos');
+           $datosExcel->getActiveSheet()->setTitle('Reporte TIRs Activos');
            
             $fechaincial = $_GET["fechainicial"];
             $fechafinal = $_GET["fechafinal"];
@@ -199,7 +199,7 @@ switch ($_GET['reporte']){
                $datosExcel->getActiveSheet()->setCellValue("K{$colinicial}","Cliente");
                $datosExcel->getActiveSheet()->setCellValue("L{$colinicial}","Barco");
 
-            $datosreporte=$reportesg->reportetirs($fechaincial, $fechafinal);
+            $datosreporte=$reportesg->reportetirs_ex($fechaincial, $fechafinal);
                
                
                foreach ($datosreporte as $dr) {
@@ -221,7 +221,7 @@ switch ($_GET['reporte']){
                 }
                
                
-               $nomarchivo="Listado de contenedores ".date("dmYHis").".xls";     
+               $nomarchivo="Listado de TIR ".date("dmYHis").".xls";     
                header('Content-Type: application/vnd.ms-excel');
                header('Content-Disposition: attachment;filename="'.$nomarchivo.'"');
                header('Cache-Control: max-age=0');

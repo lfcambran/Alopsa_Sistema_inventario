@@ -45,3 +45,9 @@ function exportar(){
     var fechafi=$('#fechafinal').val();
     window.location.href = "../exportar_re/exportar.php" + "?fechainicial=" + fechain + "&fechafinal=" + fechafi + "&tipo=" + 'tirs'
 }
+function exportarex(){
+    var fechain=$('#fechainicial').val();
+    var fechafi=$('#fechafinal').val();
+   
+    window.open('../exportar_re/exportacion_excel.php?reporte=rtir&fechainicial='+fechain+'&fechafinal='+fechafi)
+}
